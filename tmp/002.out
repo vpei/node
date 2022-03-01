@@ -1,0 +1,7 @@
+Initializing daemon...
+go-ipfs version: 0.12.0
+Repo version: 12
+System version: arm64/linux
+Golang version: go1.16.12
+
+Error: lock /root/.ipfs/repo.lock: someone else has the lock
