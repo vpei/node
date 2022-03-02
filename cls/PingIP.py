@@ -391,5 +391,5 @@ class PingIP():
         onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
         print('写入文件confile:' + confile )
         LocalFile.write_LocalFile(confile, onenode)
-        time.sleep(3)
+        time.sleep(1)
         return onenode
