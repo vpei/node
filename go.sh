@@ -65,12 +65,12 @@ echo CID-python
 dataline1=$(ipfs add -r ./out)
 echo $dataline1
 date +%Y-%m-%d-%H:%M:%S
-#echo 获取最后51个字符（46 + 5），数字50需要根据文件发布的目录调整./out，目录长度增长，51数字增加。
-CID=${dataline1: -51}
+#echo 获取最后50个字符（46 + 4），数字50需要根据文件发布的目录调整./out，目录长度增长，50数字增加。
+CID=${dataline1: -50}
 echo $CID
 # echo 删除空格后所有
-# CID=${CID% *}
-CID=${CID:0:46}
+CID=${CID% *}
+# CID=${CID:0:46}
 echo ID:$CID
 date +%Y-%m-%d-%H:%M:%S
 # ipfs id
@@ -111,10 +111,10 @@ python ./ipfs.py ipfs $CID
 #echo 显示所有进程
 #ps -A
 date +%Y-%m-%d-%H:%M:%S
-echo 离线发布ipfs name publish /ipfs/${CID:0:46} --allow-offline=true --lifetime=24h
-#ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24h
-CID=${dataline1: -51}
-ipfs name publish /ipfs/${CID:0:46}
+echo 离线发布ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24h
+# ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24h
+# CID=${dataline1: -50}
+ipfs name publish /ipfs/$CID
 #sleep 30
 date +%Y-%m-%d-%H:%M:%S
 # echo 后台运行ipfs软件
