@@ -125,8 +125,9 @@ class PingIP():
         # s = subprocess.Popen("./clients/xray/xray --config /mnt/mmcblk2p4/NodeSpeed/clients/config.json" shell=True)
         # s = subprocess.Popen(["./clients/xray/xray", "--config", "/mnt/mmcblk2p4/NodeSpeed/clients/config.json"])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],shell=True,stdout=subprocess.PIPE)
-        s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"])
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"])
+        
         print('s.pid:' + str(s.pid))
         '''
         serverStr = '127.0.0.1'
