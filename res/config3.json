@@ -1,0 +1,13 @@
+{
+  "servers": [
+    {
+      "email": "love@v2ray.com",
+      "address": "198.57.27.218",
+      "port": 2376,
+      "method": "aes-256-gcm",
+      "password": "faBAoD54k87UJG7",
+      "ota": false,
+      "level": 0
+    }
+  ]
+}

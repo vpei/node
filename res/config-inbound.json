@@ -1,0 +1,17 @@
+	"inbound": {
+		"port": 1087,
+		"protocol": "socks",  //  SOCKS 5//socks,http...
+	        "sniffing": {
+		  "enabled": true,
+		  "destOverride": ["http", "tls"]
+	        },
+		"settings": {
+			"auth": "noauth", //socks，noauth  socks 
+			"udp": true
+		}
+	},
+	"inboundDetour": [{
+		"protocol": "http",  //socks,http...
+		"port": 8080,
+		"settings": {"auth": "noauth", "udp": true}
+	}],

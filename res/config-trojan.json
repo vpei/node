@@ -1,0 +1,53 @@
+{
+	"log": {
+		//"loglevel": "warning",
+		//"access": "/access.log",
+		//"error": "/error.log"
+	},
+	"inbound": {
+		"port": 1087,
+		"protocol": "socks",  // 入口协议为 SOCKS 5//socks,http...
+	        "sniffing": {
+		  "enabled": true,
+		  "destOverride": ["http", "tls"]
+	        },
+		"settings": {
+			"auth": "noauth", //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
+			"udp": true
+		}
+	},
+	"outbound": {
+		"protocol": "trojan",
+		"settings": {
+            "servers": 
+            [
+                {
+                    "address": "89.31.127.151",
+                    "port": 443,
+                    "password": "28d98f761aca9d636f44db62544628eb",
+                    "email": "love@v2fly.org",
+                    "level": 0
+                }
+            ]
+		}
+	},
+	"inboundDetour": [{
+		"protocol": "http",  //socks,http...
+		"port": 8080,
+		"settings": {"auth": "noauth", "udp": true}
+	}],
+	"levels": {
+		"0": {
+			"handshake": 4,
+			"connIdle": 300,
+			"uplinkOnly": 2,
+			"downlinkOnly": 5,
+			"statsUserUplink": false,
+			"statsUserDownlink": false
+		}
+	},
+	"system": {
+		"statsInboundUplink": false,
+		"statsInboundDownlink": false
+	}
+}

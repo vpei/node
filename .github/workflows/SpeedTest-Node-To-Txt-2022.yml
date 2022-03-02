@@ -1,0 +1,123 @@
+# github.com/vpei/NodeSpeed
+# Description: Automatically Build NodeSpeed
+# Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
+# Source code repository: https://github.com/vpei/NodeSpeed / Branch: main
+#========================================================================================================================
+
+name: SpeedTest-Node-To-Txt-2022
+
+# Controls when the action will run. 
+on:
+  #push:
+  #  branches: [ main ]
+  #schedule:
+  #  - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+env:
+  DELETE_RELEASE: true
+  DELETE_ARTIFACTS: true
+  KEEP_DAY: 1
+  KEEP_MININUM_RUNS: 12
+  KEEP_MININUM_RELEASE: 12
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Set System Timezone'
+        run: 
+          sudo timedatectl set-timezone Asia/Shanghai
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+           python-version: 3.9
+
+      - name: 'Install requirements'
+        run: |
+          #pip install requests
+          #python -m pip install -U wheel
+          #pip install qqwry-py3
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install inetutils-ping
+          pip install -r ./requirements.txt
+
+      - name: 'Update node ip-address info'
+        id: ipdomain
+        env:
+          RESURL: ${{ secrets.RESURL }}
+        run: |
+          chmod 7777 ./clients/xray/xray
+          chmod 7777 ./clients/v2ray-core/v2ray
+          chmod 7777 ./clients/v2ray-core/v2ctl
+          chmod 7777 ./clients/v2ray-core/v2ctl
+          #python ./main.py -u "http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt"
+          python ./test.py -u https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-1.txt
+          echo "::set-output name=status::success"
+
+      - name: 'Send telegram message on push'
+        env:
+          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        uses: appleboy/telegram-action@master
+        if: steps.ipdomain.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+             Mixed Nodes: https://raw.githubusercontent.com/vpei/NodeSpeed/main/node.txt
+
+      - name: 'Commit files first'
+        if: steps.ipdomain.outputs.status == 'success' && !cancelled()
+        run: |
+          rm -rf ./__pycache__
+          rm -rf ./cls/__pycache__
+          rm -rf ./colorlog/__pycache__
+          rm -rf ./ssrspeed/__pycache__
+          git config --global user.email actions@github.com
+          git config --global user.name "GitHub Actions"
+          git pull
+          git add .
+          git commit -m "Automatic upgrade by robot at $(date +"%Y.%m.%d.%H%M")" -a
+
+      - name: 'Push changes first'
+        uses: ad-m/github-push-action@master
+        if: steps.ipdomain.outputs.status == 'success' && !cancelled()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          #branch: ${{ github.ref }}
+
+      - name: 'Delete older workflow runs and artifacts'
+        uses: Mattraks/delete-workflow-runs@main
+        if: steps.ipdomain.outputs.status == 'success' && !cancelled()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 3
+          keep_minimum_runs: 10
+
+      - name: 'Delete older workflow runs and artifacts'
+        uses: Mattraks/delete-workflow-runs@main
+        if: env.DELETE_ARTIFACTS == 'true'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: ${{ env.KEEP_DAY }}
+          keep_minimum_runs: ${{ env.KEEP_MININUM_RUNS }}
+
+      - name: 'Send telegram message on push'
+        env:
+          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        uses: appleboy/telegram-action@master
+        if: steps.publish.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+             Publish files To ipfs network is finished.
