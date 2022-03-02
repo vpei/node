@@ -389,6 +389,6 @@ class PingIP():
         inbound = LocalFile.read_LocalFile('./res/config-inbound.json')
         levels = LocalFile.read_LocalFile("./res/config-levels.json")
         onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
-    
+        print('写入文件confile:' + confile )
         LocalFile.write_LocalFile(confile, onenode) 
         return onenode
