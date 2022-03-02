@@ -12,6 +12,6 @@
 	},
 	"inboundDetour": [{
 		"protocol": "http",  //socks,http...
-		"port": 8080,
+		"port": 8088,
 		"settings": {"auth": "noauth", "udp": true}
 	}],
