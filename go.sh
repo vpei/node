@@ -80,7 +80,7 @@ echo 将文件夹CID改名
 echo 运行软件客户端
 file1=./tmp/002.out
 nohup ipfs daemon >$file1 2>&1 &
-sleep 50
+sleep 30
 #echo 下载缓存
 #nohup sudo wget http://127.0.0.1:8080/ipfs/Qmczp7Sp6bsia8f6kxdMRvzqHKzrQM6NMYec9RfQJ3ksnq/ -O $file1 >$file1 &
 date +%Y-%m-%d-%H:%M:%S
