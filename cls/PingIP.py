@@ -112,7 +112,7 @@ class PingIP():
             #return info
             print('\033[31m%s\033[0m ping 不通！' % ip)
             
-    def nodespeedtest():
+    def nodespeedtest(confile):
         # 启动v2ray
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/clients/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","{}/clients/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -126,8 +126,14 @@ class PingIP():
         # s = subprocess.Popen(["./clients/xray/xray", "--config", "/mnt/mmcblk2p4/NodeSpeed/clients/config.json"])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],shell=True,stdout=subprocess.PIPE)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"])
-        
+        print('confile1:' + confile)        
+        s = subprocess.Popen(["./clients/v2ray-core/v2ray","config","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()])
+        # s = subprocess..Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config",confile])
+
+        print('confile2:' + confile)
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray test /mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
         print('s.pid:' + str(s.pid))
         '''
         serverStr = '127.0.0.1'
@@ -186,7 +192,7 @@ class PingIP():
         try:
             st = time.time()
             # serverStr = '127.0.0.1'
-            port = 8088
+            port = 1087
             proxies = {'http': 'http://localhost:' + str(port),
                         'https': 'http://localhost:' + str(port)}
             session = requests.Session()
@@ -391,6 +397,6 @@ class PingIP():
         levels = LocalFile.read_LocalFile("./res/config-levels.json")
         onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
         print('写入文件confile:' + confile )
-        LocalFile.write_LocalFile(confile, onenode)
+        #LocalFile.write_LocalFile(confile, onenode)
         time.sleep(1)
         return onenode

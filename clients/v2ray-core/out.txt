@@ -1,0 +1,5 @@
+nohup: ignoring input
+V2Ray 5.0.3 (V2Fly, a community-driven edition of V2Ray.) Custom (go1.17.6 linux/arm)
+A unified platform for anti-censorship.
+2022/03/03 04:04:15 Using config from STDIN
+Test failed: main/commands: failed to load config > tried all loaders but failed when attempting to parse: &{file:0x30a8000};unable to parse as protobuf:read /dev/stdin: bad file descriptor;unable to parse as jsonv5:read /dev/stdin: bad file descriptor;unable to parse as json:read /dev/stdin: bad file descriptor;unable to parse as toml:read /dev/stdin: bad file descriptor;unable to parse as yaml:read /dev/stdin: bad file descriptor;unable to parse as jsonpb:read /dev/stdin: bad file descriptor;unable to parse as v2jsonpb:read /dev/stdin: bad file descriptor;

@@ -22,10 +22,11 @@ try:
 except:
     url = 'init'
 
-confile = './clients/config.json'
+confile = './clients/v2ray-core/config.json'
 url = 'https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-0.txt'
 url = 'http://118.123.241.64:8080/ipfs/QmRv7QQW4i2mDHe4GssT2eTpR43z1E7ZeexDBpVkonrwJ9/'
 url = 'http://123.56.68.121:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
+url = 'https://sub.maoxiongnet.com/sub?target=v2ray&url=https%3A%2F%2Ffree.kingfu.cf%2Fvmess%2Fsub&'
 url = 'http://143.198.135.169:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/'
 print('url: ' + url)
 
@@ -44,7 +45,8 @@ class Department:#自定义的元素
 localnode = LocalFile.read_LocalFile("./out/node.txt")
 localnode = base64.b64decode(localnode).decode("utf-8", "ignore")
 
-clashnodes = NetFile.url_to_str(url + 'node.txt', 240, 120)
+# clashnodes = NetFile.url_to_str(url + 'node.txt', 240, 120)
+clashnodes = NetFile.url_to_str('http://192.168.14.5/dat.txt', 240, 120)
 if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
     clashnodes = base64.b64decode(clashnodes).decode("utf-8")
 clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n')
@@ -64,16 +66,21 @@ for j in allnode.split('\n'):
         i += 1
         #else:
         #    continue
+        print('0000')
         onenode = PingIP.node_config_json(j, confile)
+        print('111111111')
         if(onenode.find('outbound') > -1):
             ###以上已生成config.json文件###
-            kbs = PingIP.nodespeedtest()
+            kbs = PingIP.nodespeedtest(confile)
+            print('kbs:' + str(kbs))
             if(kbs > 0):            
                 #创建元素和加入列表
                 Departs.append(Department(int(kbs), j , str(kbs)))
+                print('111111115')
                 print('Line-200-' + str(i) + '-已添加\nonenode:' + j + '\n')
             else:
                 newerrnode = newerrnode + '\n' + j
+                print('111111114')
                 print('Line-202-' + str(i) + '-已出错\nonenode:' + j + '\n')
         else:
             print('Line-204-' + str(i) + '-已过滤' + '\n')
