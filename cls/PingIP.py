@@ -127,11 +127,11 @@ class PingIP():
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],shell=True,stdout=subprocess.PIPE)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         print('confile1:' + confile)        
-        s = subprocess.Popen(["./clients/v2ray-core/v2ray","config","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","config","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()])
         # s = subprocess..Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config",confile])
-
+        s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
         print('confile2:' + confile)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray test /mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
         print('s.pid:' + str(s.pid))
@@ -398,5 +398,5 @@ class PingIP():
         onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
         print('写入文件confile:' + confile )
         #LocalFile.write_LocalFile(confile, onenode)
-        time.sleep(1)
+        time.sleep(10)
         return onenode
