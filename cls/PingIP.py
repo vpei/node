@@ -126,16 +126,15 @@ class PingIP():
         # s = subprocess.Popen(["./clients/xray/xray", "--config", "/mnt/mmcblk2p4/NodeSpeed/clients/config.json"])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],shell=True,stdout=subprocess.PIPE)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","/mnt/mmcblk2p4/NodeSpeed/clients/config.json"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        print('confile1:' + confile)        
+        print('confile:' + confile)        
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","config","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()])
         # s = subprocess..Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config",confile])
-        s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
-        print('confile2:' + confile)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray test /mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
+        s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         print('s.pid:' + str(s.pid))
-        time.sleep(3)
+        time.sleep(2)
         '''
         serverStr = '127.0.0.1'
         port = 8080
@@ -191,6 +190,7 @@ class PingIP():
         filesize = 0
         deltaTime = 0
         st = time.time()
+        '''
         try:
             s = requests.session()
             s.proxies = {'http': 'socks5://127.0.0.1:1087'}
@@ -198,21 +198,21 @@ class PingIP():
             s.keep_alive = False
             print('S-CONT-LEN:' + str(len(s.get('https://www.baidu.com/').text)))
         except Exception as ex:
-            time.sleep(5)
+            time.sleep(3)
             print('Line-500-Exception:' + str(ex))
-
+        '''        
         try:
-            # serverStr = '127.0.0.1'
+            serverStr = '127.0.0.1'
             port = 1087
             session = requests.Session()
             #proxies = {'http': 'http://localhost:' + str(port),
             #            'https': 'http://localhost:' + str(port)}
             #session.proxies.update(proxies)
-            session.proxies = {'http': 'socks5://localhost:' + str(port)}
+            
+            #session.proxies = {'http': 'socks5://localhost:' + str(port)}
+            session.proxies = {'http': 'socks5://' + serverStr + ':' + str(port)}
             session.headers = {"Connection":"close"}
             session.keep_alive = False # 关闭多余连接
-
-
 
             # url = 'https://policies.google.com/terms?hl=zh-CN&fg=1#toc-intro'
             # url = 'https://www.baidu.com'
@@ -234,7 +234,7 @@ class PingIP():
                 delay = 0
             print('rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
         except Exception as ex:
-            time.sleep(5)
+            time.sleep(3)
             print('Down-File-is-False:filesize-[' + str(filesize) + ']-deltaTime:[' + str(deltaTime) + ']-delay-[' + str(delay) + ']-Exception:\n' + str(ex))
         return delay
 
@@ -332,8 +332,7 @@ class PingIP():
                     "path": "/v2ray",
                     "tls": "none",
                     "sni": ""
-                }
-                
+                }                
                 "streamSettings": {
                     "network": "ws",
                     "security": "tls",
@@ -418,7 +417,7 @@ class PingIP():
             onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
             print('写入文件confile:' + confile )
             LocalFile.write_LocalFile(confile, onenode)
-            time.sleep(3)
+            time.sleep(2)
         except Exception as ex:
             print('Create-File-Config-Exception:\n' + str(ex))
         return onenode
