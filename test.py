@@ -66,9 +66,7 @@ for j in allnode.split('\n'):
         i += 1
         #else:
         #    continue
-        print('0000')
         onenode = PingIP.node_config_json(j, confile)
-        print('111111111')
         if(onenode.find('outbound') > -1):
             ###以上已生成config.json文件###
             kbs = PingIP.nodespeedtest(confile)
@@ -76,7 +74,6 @@ for j in allnode.split('\n'):
             if(kbs > 0):            
                 #创建元素和加入列表
                 Departs.append(Department(int(kbs), j , str(kbs)))
-                print('111111115')
                 print('Line-200-' + str(i) + '-已添加\nonenode:' + j + '\n')
             else:
                 newerrnode = newerrnode + '\n' + j
