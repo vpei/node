@@ -45,21 +45,21 @@ class Department:#自定义的元素
 localnode = LocalFile.read_LocalFile("./out/node.txt")
 localnode = base64.b64decode(localnode).decode("utf-8", "ignore")
 
-# clashnodes = NetFile.url_to_str(url + 'node.txt', 240, 120)
-clashnodes = NetFile.url_to_str('http://192.168.14.5/dat.txt', 240, 120)
+clashnodes = NetFile.url_to_str(url + 'node.txt', 240, 120)
+# clashnodes = NetFile.url_to_str('http://192.168.14.5/dat.txt', 240, 120)
 if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
     clashnodes = base64.b64decode(clashnodes).decode("utf-8")
 clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n')
 ii = 0
 allnode = ''
-# expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
+url = 'http://123.56.68.121:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
+expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
 for i in clashnodes.split('\n'):
-    if(allnode.find(i) == -1): # and expire.find(i) == -1
+    if(allnode.find(i) == -1 and expire.find(i) == -1):
         allnode = allnode + '\n' + i
 allnode = allnode.replace(' ', '').replace('\n\n', '\n').strip('\n')
 i = 0
 onenode = ''
-newerrnode = ''
 for j in allnode.split('\n'):
     try:
         #if(j.strip(' ') != ''):
@@ -76,16 +76,15 @@ for j in allnode.split('\n'):
                 Departs.append(Department(int(kbs), j , str(kbs)))
                 print('Line-200-' + str(i) + '-已添加\nonenode:' + j + '\n')
             else:
-                newerrnode = newerrnode + '\n' + j
-                print('111111114')
+                expire = expire + '\n' + j
                 print('Line-202-' + str(i) + '-已出错\nonenode:' + j + '\n')
         else:
             print('Line-204-' + str(i) + '-已过滤' + '\n')
     except Exception as ex:
         print('Line-213-' + str(i) + '-Exception:' + str(ex) + '\nonenode:' + onenode + '\nj:' + j + '\n')
 
-if(os.path.exists(confile)):
-    os.remove(confile)
+#if(os.path.exists(confile)):
+#    os.remove(confile)
 
 #划重点#划重点#划重点----排序操作
 cmpfun = operator.attrgetter('id','name')#参数为排序依据的属性，可以有多个，这里优先id，使用时按需求改换参数即可
@@ -105,4 +104,5 @@ if(len(newallnode) > 1024):
     print('node.txt-is-ok')
 else:
     print('node.txt-is-err-filesize:' + str(len(newallnode)))
-LocalFile.write_LocalFile('./out/expire.txt', newerrnode.strip('\n')) 
+
+LocalFile.write_LocalFile('./out/expire.txt', expire.strip('\n'))
