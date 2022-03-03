@@ -25,12 +25,14 @@
 #============================ Functions list ============================
 cd /mnt/mmcblk2p4/NodeSpeed
 date +%Y-%m-%d-%H:%M:%S
-# pip install requests
+#pip install requests
+#pip install pysocks
+#pip install socks
 # python -m pip install -U wheel
 # pip install qqwry-py3
 # sudo -E apt-get -qq update
 # sudo -E apt-get -qq install inetutils-ping
-# pip install -r ./requirements.txt
+#  pip install -r ./requirements.txt
 # git pull
 chmod -R 7777 ../NodeSpeed
 sleep 10
@@ -53,8 +55,9 @@ date +%Y-%m-%d-%H:%M:%S
 # chmod 7777 ./clients/v2ray-core/v2ctl
 # python ./main.py -u "http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt"
 # python ./test.py -u https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-1.txt
-python ./test.py -u https://sub.maoxiongnet.com/sub?target=v2ray&url=https%3A%2F%2Ffree.kingfu.cf%2Fvmess%2Fsub
-sleep 10
+# python ./test.py -u https://sub.maoxiongnet.com/sub?target=v2ray&url=https%3A%2F%2Ffree.kingfu.cf%2Fvmess%2Fsub
+python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt
+sleep 3600
 echo CID-python
 # git push
 # sleep 10
@@ -115,7 +118,9 @@ echo 离线发布ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24
 # ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24h
 # CID=${dataline1: -50}
 ipfs name publish /ipfs/$CID
-#sleep 30
+sleep 30
+ipfs name publish /ipfs/$CID
+sleep 30
 date +%Y-%m-%d-%H:%M:%S
 # echo 后台运行ipfs软件
 # file1=./ipfs/tmp/003.out

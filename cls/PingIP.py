@@ -190,25 +190,42 @@ class PingIP():
         delay = -1
         filesize = 0
         deltaTime = 0
+        st = time.time()
         try:
-            st = time.time()
+            s = requests.session()
+            s.proxies = {'http': 'socks5://127.0.0.1:1087'}
+            s.headers = {'Connection':'close'}
+            s.keep_alive = False
+            print('S-CONT-LEN:' + str(len(s.get('https://www.baidu.com/').text)))
+        except Exception as ex:
+            time.sleep(5)
+            print('Line-500-Exception:' + str(ex))
+
+        try:
             # serverStr = '127.0.0.1'
             port = 1087
-            proxies = {'http': 'http://localhost:' + str(port),
-                        'https': 'http://localhost:' + str(port)}
             session = requests.Session()
-            session.proxies.update(proxies)
-            url = 'http://cachefly.cachefly.net/1mb.test'
-            # url = 'https://policies.google.com/terms?hl=zh-CN&fg=1#toc-intro'
+            #proxies = {'http': 'http://localhost:' + str(port),
+            #            'https': 'http://localhost:' + str(port)}
+            #session.proxies.update(proxies)
+            session.proxies = {'http': 'socks5://localhost:' + str(port)}
+            session.headers = {"Connection":"close"}
             session.keep_alive = False # 关闭多余连接
-            headers = {"Connection":"close"}
-            session.headers = headers
-            rq = session.get(url, timeout = 20)
+
+
+
+            # url = 'https://policies.google.com/terms?hl=zh-CN&fg=1#toc-intro'
+            # url = 'https://www.baidu.com'
+            url = 'https://cachefly.cachefly.net/1mb.test'
+            # rq = session.get(url, timeout = 20)
+            rq = s.get(url, timeout = 20)
+            rq.encoding = "utf-8"
             if (rq.status_code == 200):
-                filez = rq.text
-                filesize = len(filez)
+                #filez = rq.text
+                filesize = len(rq.text)
                 deltaTime = time.time() - st
                 #filesize = 1048796
+                #filesize = 341553
                 if(filesize > 102400):
                     delay = int(filesize / 1024 / deltaTime)
                 else:
@@ -217,187 +234,191 @@ class PingIP():
                 delay = 0
             print('rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
         except Exception as ex:
+            time.sleep(5)
             print('Down-File-is-False:filesize-[' + str(filesize) + ']-deltaTime:[' + str(deltaTime) + ']-delay-[' + str(delay) + ']-Exception:\n' + str(ex))
         return delay
 
     def node_config_json(j, confile):
-        if(j.find('ss://') == 0):
-            onenode = j.split("#", 1) # 第二个参数为 1，返回两个参数列表
-            oldname = onenode[1]
-            onenode = (base64.b64decode(onenode[0][5:].encode("utf-8")).decode("utf-8"))
-            # chacha20-ietf-poly1305:12f4863a-b470-40c9-8c3a-47606b1012b5@n18.emovpn.xyz:443
-            port = onenode.rsplit(':', 1)[1]
-            address = StrText.get_str_btw(onenode, "@", ":")
-            method = onenode.split(':', 1)[0]
-            password = StrText.get_str_btw(onenode, ":", "@")
+        try:
+            if(j.find('ss://') == 0):
+                onenode = j.split("#", 1) # 第二个参数为 1，返回两个参数列表
+                oldname = onenode[1]
+                onenode = (base64.b64decode(onenode[0][5:].encode("utf-8")).decode("utf-8"))
+                # chacha20-ietf-poly1305:12f4863a-b470-40c9-8c3a-47606b1012b5@n18.emovpn.xyz:443
+                port = onenode.rsplit(':', 1)[1]
+                address = StrText.get_str_btw(onenode, "@", ":")
+                method = onenode.split(':', 1)[0]
+                password = StrText.get_str_btw(onenode, ":", "@")
 
-            onenode = '	"outbound": {\n'
-            onenode = onenode + '		"protocol": "shadowsocks",\n'
-            onenode = onenode + '		"settings": {\n'
-            onenode = onenode + '			"servers":\n'
-            onenode = onenode + '			[\n'
-            onenode = onenode + '				{\n'
-            onenode = onenode + '					"email": "love@v2ray.com",\n'
-            onenode = onenode + '					"address": "' + address + '",\n'
-            onenode = onenode + '					"port": ' + port + ',\n'
-            onenode = onenode + '					"method": "' + method + '",\n'
-            onenode = onenode + '					"password": "' + password + '",\n'
-            onenode = onenode + '					"ota": false,\n'
-            onenode = onenode + '					"level": 0\n'
-            onenode = onenode + '				}\n'
-            onenode = onenode + '			]\n'
-            onenode = onenode + '		}\n'
-            onenode = onenode + '	},'
-        elif(j.find('trojan://') == 0):
-            #trojan://8cf83f44-79ff-4e50-be1a-585c82338912@t2.ssrsub.com:8443?sni=douyincdn.com#name
-            onenode = j[9:].replace('?', '#')
-            password = onenode.split('@', 1)[0]
-            address = StrText.get_str_btw(onenode, '@', ':')
-            if(onenode.find('#') == -1):
-                onenode = onenode + '#' + address
-            port = StrText.get_str_btw(onenode, ':', '#')
-            sni = ''
-            if(onenode.find('sni') > -1):
-                sni = StrText.get_str_btw(onenode, 'sni=', '#')
+                onenode = '	"outbound": {\n'
+                onenode = onenode + '		"protocol": "shadowsocks",\n'
+                onenode = onenode + '		"settings": {\n'
+                onenode = onenode + '			"servers":\n'
+                onenode = onenode + '			[\n'
+                onenode = onenode + '				{\n'
+                onenode = onenode + '					"email": "love@v2ray.com",\n'
+                onenode = onenode + '					"address": "' + address + '",\n'
+                onenode = onenode + '					"port": ' + port + ',\n'
+                onenode = onenode + '					"method": "' + method + '",\n'
+                onenode = onenode + '					"password": "' + password + '",\n'
+                onenode = onenode + '					"ota": false,\n'
+                onenode = onenode + '					"level": 0\n'
+                onenode = onenode + '				}\n'
+                onenode = onenode + '			]\n'
+                onenode = onenode + '		}\n'
+                onenode = onenode + '	},'
+            elif(j.find('trojan://') == 0):
+                #trojan://8cf83f44-79ff-4e50-be1a-585c82338912@t2.ssrsub.com:8443?sni=douyincdn.com#name
+                onenode = j[9:].replace('?', '#')
+                password = onenode.split('@', 1)[0]
+                address = StrText.get_str_btw(onenode, '@', ':')
+                if(onenode.find('#') == -1):
+                    onenode = onenode + '#' + address
+                port = StrText.get_str_btw(onenode, ':', '#')
+                sni = ''
+                if(onenode.find('sni') > -1):
+                    sni = StrText.get_str_btw(onenode, 'sni=', '#')
 
-            onenode = '	"outbound": {\n'
-            onenode = onenode + '		"protocol": "trojan",\n'
-            onenode = onenode + '		"settings": {\n'
-            onenode = onenode + '			"servers":\n'
-            onenode = onenode + '			[\n'
-            onenode = onenode + '				{\n'
-            onenode = onenode + '					"email": "love@v2ray.com",\n'
-            onenode = onenode + '					"address": "' + address + '",\n'
-            onenode = onenode + '					"port": ' + port + ',\n'
-            onenode = onenode + '					"password": "' + password + '",\n'
-            onenode = onenode + '					"level": 0\n'
-            onenode = onenode + '				}\n'
-            onenode = onenode + '			]\n'
-            onenode = onenode + '		},\n'
-            onenode = onenode + '		"streamSettings": {\n'
-            if(sni != ''):
-                onenode = onenode + '			"security": "tcp",\n'
-                onenode = onenode + '			"security": "tls",\n'
-                onenode = onenode + '			"sni": "' + sni + '"\n'
-            onenode = onenode + '		}\n'
-            onenode = onenode + '	},'
-        elif(j.find('vmess://') == 0):
-            aonenode = (base64.b64decode(j[8:].encode("utf-8")).decode("utf-8"))
-            '''
-            {
-                "v": "2",
-                "ps": "-美国-137.175.30.251",
-                "add": "137.175.30.251",
-                "port": "111",
-                "id": "77cd775c-1c0a-11ec-a1a8-00163c1393a8",
-                "aid": "0",
-                "scy": "auto",
-                "net": "tcp",
-                "type": "vmess",
-                "host": "",
-                "path": "/",
-                "tls": "",
-                "sni": ""
-            }
-            {
-                "v": "2",
-                "ps": "https://1808.ga",
-                "add": "ff5.uuv2.co.uk",
-                "port": "80",
-                "id": "fbf53107-1b42-3da5-a77d-6ad22544c0e9",
-                "aid": "2",
-                "scy": "auto",
-                "net": "ws",
-                "type": "none",
-                "host": "t.me/vpnhat",
-                "path": "/v2ray",
-                "tls": "none",
-                "sni": ""
-            }
-            
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "wsSettings": {
-                    "path": "/ws",
-                    "headers": {
-                    "host": "tls.glloyd.com"
+                onenode = '	"outbound": {\n'
+                onenode = onenode + '		"protocol": "trojan",\n'
+                onenode = onenode + '		"settings": {\n'
+                onenode = onenode + '			"servers":\n'
+                onenode = onenode + '			[\n'
+                onenode = onenode + '				{\n'
+                onenode = onenode + '					"email": "love@v2ray.com",\n'
+                onenode = onenode + '					"address": "' + address + '",\n'
+                onenode = onenode + '					"port": ' + port + ',\n'
+                onenode = onenode + '					"password": "' + password + '",\n'
+                onenode = onenode + '					"level": 0\n'
+                onenode = onenode + '				}\n'
+                onenode = onenode + '			]\n'
+                onenode = onenode + '		},\n'
+                onenode = onenode + '		"streamSettings": {\n'
+                if(sni != ''):
+                    onenode = onenode + '			"security": "tcp",\n'
+                    onenode = onenode + '			"security": "tls",\n'
+                    onenode = onenode + '			"sni": "' + sni + '"\n'
+                onenode = onenode + '		}\n'
+                onenode = onenode + '	},'
+            elif(j.find('vmess://') == 0):
+                aonenode = (base64.b64decode(j[8:].encode("utf-8")).decode("utf-8"))
+                '''
+                {
+                    "v": "2",
+                    "ps": "-美国-137.175.30.251",
+                    "add": "137.175.30.251",
+                    "port": "111",
+                    "id": "77cd775c-1c0a-11ec-a1a8-00163c1393a8",
+                    "aid": "0",
+                    "scy": "auto",
+                    "net": "tcp",
+                    "type": "vmess",
+                    "host": "",
+                    "path": "/",
+                    "tls": "",
+                    "sni": ""
+                }
+                {
+                    "v": "2",
+                    "ps": "https://1808.ga",
+                    "add": "ff5.uuv2.co.uk",
+                    "port": "80",
+                    "id": "fbf53107-1b42-3da5-a77d-6ad22544c0e9",
+                    "aid": "2",
+                    "scy": "auto",
+                    "net": "ws",
+                    "type": "none",
+                    "host": "t.me/vpnhat",
+                    "path": "/v2ray",
+                    "tls": "none",
+                    "sni": ""
+                }
+                
+                "streamSettings": {
+                    "network": "ws",
+                    "security": "tls",
+                    "wsSettings": {
+                        "path": "/ws",
+                        "headers": {
+                        "host": "tls.glloyd.com"
+                        }
                     }
                 }
-            }
-            '''
-            node = json.loads(aonenode)
+                '''
+                node = json.loads(aonenode)
 
-            onenode = '	"outbound": {\n'
-            onenode = onenode + '        "protocol": "vmess",\n'
-            onenode = onenode + '        "settings": {\n'
-            onenode = onenode + '            "vnext":\n'
-            onenode = onenode + '            [\n'
-            onenode = onenode + '                {\n'
-            onenode = onenode + '                    "address": "' + node['add'] + '",\n'
-            onenode = onenode + '                    "port": ' + node['port'] + ',\n'
-            onenode = onenode + '                    "users": [{"id": "' + node['id'] + '", "alterId": ' + node['aid'] + ', "security": "' + node['scy'] + '", "level": 0}]\n'
-            onenode = onenode + '                }\n'
-            onenode = onenode + '            ],\n'
-            onenode = onenode + '            "servers": null,\n'
-            onenode = onenode + '            "response": null\n'
-            onenode = onenode + '        },\n'
-            onenode = onenode + '        "streamSettings":\n'
-            onenode = onenode + '        {\n'
-            onenode = onenode + '            "network": "' + node['net'] + '",\n'
-            if(node['tls'] == 'tls' or node['tls'] == 'True' or node['tls'] == 'true'):
-                onenode = onenode + '            "security": "tls",\n'
-                if(aonenode.find('"sni":') > -1):
-                    onenode = onenode + '            "sni":"' + node['sni'] + '",\n'
-                if(aonenode.find('certificateFile') > -1 and aonenode.find('keyFile:') > -1):
-                    onenode = onenode + '            "tlsSettings": {\n'
-                    onenode = onenode + '                "certificates": [\n'
-                    onenode = onenode + '                "{\n'
-                    onenode = onenode + '                "    "certificateFile": "/etc/v2ray/v2ray.crt", // 证书文件 \n'
-                    onenode = onenode + '                "    "keyFile": "/etc/v2ray/v2ray.key" // 密钥文件 \n'
-                    onenode = onenode + '                "}]\n'
-                    onenode = onenode + '            },\n'
-                else: #none ''
-                    onenode = onenode + '            "tlsSettings": {},\n'
-            else:
-                onenode = onenode + '            "security": "none",\n'
-            # 不同传输协议，配置不同信息
-            if(node['net'] == 'tcp'):
-                onenode = onenode + '            "tcpSettings": {}\n'
-            elif(node['net'] == 'kcp'):
-                onenode = onenode + '            "kcpSettings": {}\n'
-            elif(node['net'] == 'ws'):
-                onenode = onenode + '            "wsSettings": \n'
-                onenode = onenode + '            {\n'
-                if(aonenode.find('"path":') > -1 and aonenode.find('"ws-headers":') > -1):
-                    onenode = onenode + '                "path": "' + node['path'] + '",\n'
-                    if(aonenode.find('"ws-headers":') > -1 and aonenode.find('"Host":') > -1):
-                        onenode = onenode + '                "headers": {"host": "' + node['Host'] + '"}\n'
-                    elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"host":') > -1):
-                        onenode = onenode + '                "headers": {"host": "' + node['host'] + '"}\n'
-                    elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"HOST":') > -1):
-                        onenode = onenode + '                "headers": {"host": "' + node['HOST'] + '"}\n'
+                onenode = '	"outbound": {\n'
+                onenode = onenode + '        "protocol": "vmess",\n'
+                onenode = onenode + '        "settings": {\n'
+                onenode = onenode + '            "vnext":\n'
+                onenode = onenode + '            [\n'
+                onenode = onenode + '                {\n'
+                onenode = onenode + '                    "address": "' + node['add'] + '",\n'
+                onenode = onenode + '                    "port": ' + node['port'] + ',\n'
+                onenode = onenode + '                    "users": [{"id": "' + node['id'] + '", "alterId": ' + node['aid'] + ', "security": "' + node['scy'] + '", "level": 0}]\n'
+                onenode = onenode + '                }\n'
+                onenode = onenode + '            ],\n'
+                onenode = onenode + '            "servers": null,\n'
+                onenode = onenode + '            "response": null\n'
+                onenode = onenode + '        },\n'
+                onenode = onenode + '        "streamSettings":\n'
+                onenode = onenode + '        {\n'
+                onenode = onenode + '            "network": "' + node['net'] + '",\n'
+                if(node['tls'] == 'tls' or node['tls'] == 'True' or node['tls'] == 'true'):
+                    onenode = onenode + '            "security": "tls",\n'
+                    if(aonenode.find('"sni":') > -1):
+                        onenode = onenode + '            "sni":"' + node['sni'] + '",\n'
+                    if(aonenode.find('certificateFile') > -1 and aonenode.find('keyFile:') > -1):
+                        onenode = onenode + '            "tlsSettings": {\n'
+                        onenode = onenode + '                "certificates": [\n'
+                        onenode = onenode + '                "{\n'
+                        onenode = onenode + '                "    "certificateFile": "/etc/v2ray/v2ray.crt", // 证书文件 \n'
+                        onenode = onenode + '                "    "keyFile": "/etc/v2ray/v2ray.key" // 密钥文件 \n'
+                        onenode = onenode + '                "}]\n'
+                        onenode = onenode + '            },\n'
+                    else: #none ''
+                        onenode = onenode + '            "tlsSettings": {},\n'
                 else:
-                    onenode = onenode + '                "path": "' + node['path'] + '"\n'
-                onenode = onenode + '            }\n'
-            elif(node['net'] == 'quic'):
-                onenode = onenode + '            "quicSettings": {}\n'
-            elif(node['net'] == 'grpc'):
-                onenode = onenode + '            "grpcSettings": {\n'
-                onenode = onenode + '                "serviceName": "" //填写你的 ServiceName\n'
-                onenode = onenode + '            }\n'
-            #if(node['net'] == 'http'):
-            #onenode = onenode + '            "httpSettings":{\n'
-            #onenode = onenode + '                "path": "' + node['path'] + '"\n'
-            #onenode = onenode + '            },\n'
-            onenode = onenode + '		}\n'
-            onenode = onenode + '	},'
+                    onenode = onenode + '            "security": "none",\n'
+                # 不同传输协议，配置不同信息
+                if(node['net'] == 'tcp'):
+                    onenode = onenode + '            "tcpSettings": {}\n'
+                elif(node['net'] == 'kcp'):
+                    onenode = onenode + '            "kcpSettings": {}\n'
+                elif(node['net'] == 'ws'):
+                    onenode = onenode + '            "wsSettings": \n'
+                    onenode = onenode + '            {\n'
+                    if(aonenode.find('"path":') > -1 and aonenode.find('"ws-headers":') > -1):
+                        onenode = onenode + '                "path": "' + node['path'] + '",\n'
+                        if(aonenode.find('"ws-headers":') > -1 and aonenode.find('"Host":') > -1):
+                            onenode = onenode + '                "headers": {"host": "' + node['Host'] + '"}\n'
+                        elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"host":') > -1):
+                            onenode = onenode + '                "headers": {"host": "' + node['host'] + '"}\n'
+                        elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"HOST":') > -1):
+                            onenode = onenode + '                "headers": {"host": "' + node['HOST'] + '"}\n'
+                    else:
+                        onenode = onenode + '                "path": "' + node['path'] + '"\n'
+                    onenode = onenode + '            }\n'
+                elif(node['net'] == 'quic'):
+                    onenode = onenode + '            "quicSettings": {}\n'
+                elif(node['net'] == 'grpc'):
+                    onenode = onenode + '            "grpcSettings": {\n'
+                    onenode = onenode + '                "serviceName": "" //填写你的 ServiceName\n'
+                    onenode = onenode + '            }\n'
+                #if(node['net'] == 'http'):
+                #onenode = onenode + '            "httpSettings":{\n'
+                #onenode = onenode + '                "path": "' + node['path'] + '"\n'
+                #onenode = onenode + '            },\n'
+                onenode = onenode + '		}\n'
+                onenode = onenode + '	},'
 
-        log = LocalFile.read_LocalFile('./res/config-log.json')
-        inbound = LocalFile.read_LocalFile('./res/config-inbound.json')
-        levels = LocalFile.read_LocalFile("./res/config-levels.json")
-        onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
-        print('写入文件confile:' + confile )
-        #LocalFile.write_LocalFile(confile, onenode)
-        time.sleep(3)
+            log = LocalFile.read_LocalFile('./res/config-log.json')
+            inbound = LocalFile.read_LocalFile('./res/config-inbound.json')
+            levels = LocalFile.read_LocalFile("./res/config-levels.json")
+            onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
+            print('写入文件confile:' + confile )
+            LocalFile.write_LocalFile(confile, onenode)
+            time.sleep(3)
+        except Exception as ex:
+            print('Create-File-Config-Exception:\n' + str(ex))
         return onenode
