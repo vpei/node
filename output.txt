@@ -1,1 +1,0 @@
-/bin/bash: /mnt/mmcblk2p4/NodeSpeed/go.sh: /bin/bash^M: bad interpreter: No such file or directory

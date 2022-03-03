@@ -135,6 +135,7 @@ class PingIP():
         print('confile2:' + confile)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray test /mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
         print('s.pid:' + str(s.pid))
+        time.sleep(3)
         '''
         serverStr = '127.0.0.1'
         port = 8080
@@ -398,5 +399,5 @@ class PingIP():
         onenode = log + '\n' + inbound + '\n' + onenode + '\n' + levels
         print('写入文件confile:' + confile )
         #LocalFile.write_LocalFile(confile, onenode)
-        time.sleep(10)
+        time.sleep(3)
         return onenode

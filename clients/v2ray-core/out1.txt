@@ -1,3 +1,0 @@
-V2Ray 5.0.3 (V2Fly, a community-driven edition of V2Ray.) Custom (go1.17.6 linux/arm)
-A unified platform for anti-censorship.
-2022/03/03 06:03:49 Using config from STDIN
