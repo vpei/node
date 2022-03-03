@@ -1,0 +1,42 @@
+Initializing daemon...
+go-ipfs version: 0.12.0
+Repo version: 12
+System version: arm64/linux
+Golang version: go1.16.12
+2022/03/01 20:41:18 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 2048 kiB, got: 416 kiB). See https://github.com/lucas-clemente/quic-go/wiki/UDP-Receive-Buffer-Size for details.
+Swarm listening on /ip4/127.0.0.1/tcp/4001
+Swarm listening on /ip4/127.0.0.1/udp/4001/quic
+Swarm listening on /ip4/192.168.14.254/tcp/4001
+Swarm listening on /ip4/192.168.14.254/udp/4001/quic
+Swarm listening on /ip4/192.168.192.14/tcp/4001
+Swarm listening on /ip4/192.168.192.14/udp/4001/quic
+Swarm listening on /ip4/192.168.9.86/tcp/4001
+Swarm listening on /ip4/192.168.9.86/udp/4001/quic
+Swarm listening on /ip6/10:0:14::254/tcp/4001
+Swarm listening on /ip6/10:0:14::254/udp/4001/quic
+Swarm listening on /ip6/10:0:9:0:fe7c:2ff:fe91:ef21/tcp/4001
+Swarm listening on /ip6/10:0:9:0:fe7c:2ff:fe91:ef21/udp/4001/quic
+Swarm listening on /ip6/10:0:9::df7/tcp/4001
+Swarm listening on /ip6/10:0:9::df7/udp/4001/quic
+Swarm listening on /ip6/240e:362:46e:6e00::df7/tcp/4001
+Swarm listening on /ip6/240e:362:46e:6e00::df7/udp/4001/quic
+Swarm listening on /ip6/240e:362:46e:6e00:fe7c:2ff:fe91:ef21/tcp/4001
+Swarm listening on /ip6/240e:362:46e:6e00:fe7c:2ff:fe91:ef21/udp/4001/quic
+Swarm listening on /ip6/::1/tcp/4001
+Swarm listening on /ip6/::1/udp/4001/quic
+Swarm listening on /p2p-circuit
+Swarm announcing /ip4/127.0.0.1/tcp/4001
+Swarm announcing /ip4/127.0.0.1/udp/4001/quic
+Swarm announcing /ip4/192.168.9.86/tcp/4001
+Swarm announcing /ip4/192.168.9.86/udp/4001/quic
+Swarm announcing /ip6/240e:362:46e:6e00:fe7c:2ff:fe91:ef21/tcp/4001
+Swarm announcing /ip6/240e:362:46e:6e00:fe7c:2ff:fe91:ef21/udp/4001/quic
+Swarm announcing /ip6/::1/tcp/4001
+Swarm announcing /ip6/::1/udp/4001/quic
+API server listening on /ip4/192.168.14.254/tcp/5001
+WebUI: http://192.168.14.254:5001/webui
+Gateway (readonly) server listening on /ip4/192.168.14.254/tcp/8080
+Daemon is ready
+
+Received interrupt signal, shutting down...
+(Hit ctrl-c again to force-shutdown the daemon.)
