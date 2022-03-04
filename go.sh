@@ -51,7 +51,7 @@ sleep 3
 # git add . && git commit -m "Update config for Speed-Node-OP" -a && git push
 # sleep 10
 date +%Y-%m-%d-%H:%M:%S
-echo ./test.py
+echo python ./test.py -u
 # chmod 7777 ./clients/config.json
 # chmod 7777 ./clients/xray/xray
 # chmod 7777 ./clients/v2ray-core/v2ray
@@ -59,7 +59,7 @@ echo ./test.py
 # python ./main.py -u "http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt"
 # python ./test.py -u https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-1.txt
 # python ./test.py -u https://sub.maoxiongnet.com/sub?target=v2ray&url=https%3A%2F%2Ffree.kingfu.cf%2Fvmess%2Fsub
-file1=./tmp/001.out
+# file1=./tmp/001.out
 # nohup python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt >$file1 2>&1 &
 python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt
 sleep 3600
