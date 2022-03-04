@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "20.24.80.180",
-                    "port": 52332,
-                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "d0a8692.t3.gladns.com",
+                    "port": 3306,
+                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 32, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,6 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
+                "path": "/s/d0a8692.fm.apple.com:32667"
             }
 		}
 	},

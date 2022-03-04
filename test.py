@@ -74,12 +74,12 @@ for j in allnode.split('\n'):
             if(kbs > 0):            
                 #创建元素和加入列表
                 Departs.append(Department(int(kbs), j , str(kbs)))
-                print('Line-77-' + str(i) + '-已添加节点:' + j + '\n')
+                print('Line-200-' + str(i) + '-已添加\nonenode:' + j + '\n')
             else:
                 expire = expire + '\n' + j
-                print('Line-80-' + str(i) + '-已出错节点:' + j + '\n')
+                print('Line-202-' + str(i) + '-已出错\nonenode:' + j + '\n')
         else:
-            print('Line-82-' + str(i) + '-已过滤节点' + '\n')
+            print('Line-204-' + str(i) + '-已过滤' + '\n')
     except Exception as ex:
         print('Line-213-' + str(i) + '-Exception:' + str(ex) + '\nonenode:' + onenode + '\nj:' + j + '\n')
 
