@@ -28,7 +28,7 @@
 # export PATH
 
 date +%Y-%m-%d-%H:%M:%S
-echo chmod -R 7777
+echo cd NodeSpeed
 cd /mnt/mmcblk2p4/NodeSpeed
 #pip install requests
 #pip install pysocks
@@ -39,19 +39,11 @@ cd /mnt/mmcblk2p4/NodeSpeed
 # sudo -E apt-get -qq install inetutils-ping
 #  pip install -r ./requirements.txt
 # git pull
+echo chmod -R 7777 ../NodeSpeed
 chmod -R 7777 ../NodeSpeed
 sleep 3
-# git push
-# sleep 10
-# echo CID-push
-# git pull
-# sleep 10
-# echo CID-pull
-# sleep 10
-# git add . && git commit -m "Update config for Speed-Node-OP" -a && git push
-# sleep 10
 date +%Y-%m-%d-%H:%M:%S
-echo ./test.py
+echo python ./test.py -u
 # chmod 7777 ./clients/config.json
 # chmod 7777 ./clients/xray/xray
 # chmod 7777 ./clients/v2ray-core/v2ray
@@ -139,5 +131,17 @@ dataline1=$(jobs -l|grep ipfs| grep -v grep | awk '{print $2}')
 kill -9 $dataline1
 
 rm -rf ./cls/__pycache__
+
+git pull
+sleep 10
+git pull
+sleep 10
+git pull
+sleep 10
+git add . && git commit -m "Update config for Speed-Node-OP" -a && git push
+sleep 10
+git push
+sleep 10
+git push
 
 exit 0
