@@ -135,4 +135,6 @@ date +%Y-%m-%d-%H:%M:%S
 python ./ipfs.py ipns
 date +%Y-%m-%d-%H:%M:%S
 
+rm -rf ./cls/__pycache__
+
 exit 0

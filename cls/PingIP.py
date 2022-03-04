@@ -225,9 +225,9 @@ class PingIP():
                 #filez = rq.text
                 filesize = len(rq.text)
                 deltaTime = time.time() - st
-                #filesize = 1048796
+                #filesize = 1048576
                 #filesize = 341553
-                if(filesize >= 1048796):
+                if(filesize >= 1048000):
                     delay = int(filesize / 1024 / deltaTime)
                 else:
                     delay = 0
