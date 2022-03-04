@@ -130,3 +130,5 @@ date +%Y-%m-%d-%H:%M:%S
 # echo ipfs run
 python ./ipfs.py ipns
 date +%Y-%m-%d-%H:%M:%S
+
+exit 0
