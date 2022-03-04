@@ -3,6 +3,7 @@
 import base64
 import json
 import os
+from signal import SIGKILL
 import requests
 import socket
 import subprocess
@@ -226,13 +227,17 @@ class PingIP():
                 deltaTime = time.time() - st
                 #filesize = 1048796
                 #filesize = 341553
-                if(filesize > 102400):
+                if(filesize >= 1048796):
                     delay = int(filesize / 1024 / deltaTime)
                 else:
                     delay = 0
             else:
                 delay = 0
             print('rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
+            time.sleep(3)
+            s.kill()
+            #s.kill(SIGKILL)
+            #os.killpg(p.pid, signal.SIGUSR1)
         except Exception as ex:
             time.sleep(3)
             print('Down-File-is-False:filesize-[' + str(filesize) + ']-deltaTime:[' + str(deltaTime) + ']-delay-[' + str(delay) + ']-Exception:\n' + str(ex))
