@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 import base64
-import requests
 import sys
-import os
+import time
 import operator
 from cls import IsValid
 from cls import LocalFile
@@ -66,6 +65,7 @@ for j in allnode.split('\n'):
         i += 1
         #else:
         #    continue
+        print(time.strftime('%Y-%m-%d %H:%M:%S'))
         onenode = PingIP.node_config_json(j, confile)
         if(onenode.find('outbound') > -1):
             ###以上已生成config.json文件###
@@ -74,17 +74,17 @@ for j in allnode.split('\n'):
             if(kbs > 0):            
                 #创建元素和加入列表
                 Departs.append(Department(int(kbs), j , str(kbs)))
-                print('Line-200-' + str(i) + '-已添加\nonenode:' + j + '\n')
+                print('Line-77-' + str(i) + '-已添加节点:' + j + '\n')
             else:
                 expire = expire + '\n' + j
-                print('Line-202-' + str(i) + '-已出错\nonenode:' + j + '\n')
+                print('Line-80-' + str(i) + '-已出错节点:' + j + '\n')
         else:
-            print('Line-204-' + str(i) + '-已过滤' + '\n')
+            print('Line-82-' + str(i) + '-已过滤节点' + '\n')
     except Exception as ex:
         print('Line-213-' + str(i) + '-Exception:' + str(ex) + '\nonenode:' + onenode + '\nj:' + j + '\n')
 
-#if(os.path.exists(confile)):
-#    os.remove(confile)
+# if(os.path.exists(confile)):
+# os.remove(confile)
 
 #划重点#划重点#划重点----排序操作
 cmpfun = operator.attrgetter('id','name')#参数为排序依据的属性，可以有多个，这里优先id，使用时按需求改换参数即可
@@ -106,3 +106,5 @@ else:
     print('node.txt-is-err-filesize:' + str(len(newallnode)))
 
 LocalFile.write_LocalFile('./out/expire.txt', expire.strip('\n'))
+
+print(time.strftime('%Y-%m-%d %H:%M:%S'))
