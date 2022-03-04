@@ -1,0 +1,60 @@
+{
+	"log": {
+		//"loglevel": "warning",
+		//"access": "/access.log",
+		//"error": "/error.log"
+	},
+	"inbound": {
+		"port": 1087,
+		"protocol": "socks",  //  SOCKS 5//socks,http...
+	        "sniffing": {
+		  "enabled": true,
+		  "destOverride": ["http", "tls"]
+	        },
+		"settings": {
+			"auth": "noauth", //socksï¼noauth  socks 
+			"udp": true
+		}
+	},
+	"inboundDetour": [{
+		"protocol": "http",  //socks,http...
+		"port": 8088,
+		"settings": {"auth": "noauth", "udp": true}
+	}],
+	"outbound": {
+        "protocol": "vmess",
+        "settings": {
+            "vnext":
+            [
+                {
+                    "address": "116.wowogg.cyou",
+                    "port": 52216,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 2, "security": "auto", "level": 0}]
+                }
+            ],
+            "servers": null,
+            "response": null
+        },
+        "streamSettings":
+        {
+            "network": "tcp",
+            "security": "none",
+            "tcpSettings": {}
+		}
+	},
+
+	"levels": {
+		"100": {
+			"handshake": 4,
+			"connIdle": 300,
+			"uplinkOnly": 2,
+			"downlinkOnly": 5,
+			"statsUserUplink": false,
+			"statsUserDownlink": false
+		}
+	},
+	"system": {
+		"statsInboundUplink": false,
+		"statsInboundDownlink": false
+	}
+}
