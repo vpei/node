@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash  /etc/rc.common
 #========================================================================
 #
 # This file is licensed under the terms of the GNU General Public
@@ -23,6 +23,10 @@
 # Command optional parameters please refer to the source code repository
 #
 #============================ Functions list ============================
+
+PATH=/mnt/mmcblk2p4/NodeSpeed
+export PATH
+
 cd /mnt/mmcblk2p4/NodeSpeed
 date +%Y-%m-%d-%H:%M:%S
 #pip install requests
