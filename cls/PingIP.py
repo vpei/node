@@ -218,7 +218,7 @@ class PingIP():
             # url = 'https://www.baidu.com'
             url = 'https://cachefly.cachefly.net/1mb.test'
             # rq = session.get(url, timeout = 20)
-            rq = s.get(url, timeout = 20)
+            rq = session.get(url, timeout = 20)
             rq.encoding = "utf-8"
             if (rq.status_code == 200):
                 #filez = rq.text

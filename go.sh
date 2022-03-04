@@ -28,6 +28,7 @@
 # export PATH
 
 date +%Y-%m-%d-%H:%M:%S
+echo chmod -R 7777
 cd /mnt/mmcblk2p4/NodeSpeed
 #pip install requests
 #pip install pysocks
@@ -39,9 +40,7 @@ cd /mnt/mmcblk2p4/NodeSpeed
 #  pip install -r ./requirements.txt
 # git pull
 chmod -R 7777 ../NodeSpeed
-sleep 10
-date +%Y-%m-%d-%H:%M:%S
-echo CID-7777 
+sleep 3
 # git push
 # sleep 10
 # echo CID-push
@@ -51,8 +50,8 @@ echo CID-7777
 # sleep 10
 # git add . && git commit -m "Update config for Speed-Node-OP" -a && git push
 # sleep 10
-# echo CID-git-push
 date +%Y-%m-%d-%H:%M:%S
+echo ./test.py
 # chmod 7777 ./clients/config.json
 # chmod 7777 ./clients/xray/xray
 # chmod 7777 ./clients/v2ray-core/v2ray
