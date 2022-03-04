@@ -24,11 +24,11 @@
 #
 #============================ Functions list ============================
 
-PATH=/mnt/mmcblk2p4/NodeSpeed
-export PATH
+# PATH=/mnt/mmcblk2p4/NodeSpeed
+# export PATH
 
-cd /mnt/mmcblk2p4/NodeSpeed
 date +%Y-%m-%d-%H:%M:%S
+cd /mnt/mmcblk2p4/NodeSpeed
 #pip install requests
 #pip install pysocks
 #pip install socks
@@ -135,3 +135,5 @@ date +%Y-%m-%d-%H:%M:%S
 # echo ipfs run
 python ./ipfs.py ipns
 date +%Y-%m-%d-%H:%M:%S
+
+exit 0
