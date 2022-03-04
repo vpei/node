@@ -24,8 +24,8 @@
 #
 #============================ Functions list ============================
 
-PATH=/mnt/mmcblk2p4/NodeSpeed
-export PATH
+#PATH=/mnt/mmcblk2p4/NodeSpeed
+#export PATH
 
 cd /mnt/mmcblk2p4/NodeSpeed
 date +%Y-%m-%d-%H:%M:%S
