@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "116.wowogg.cyou",
-                    "port": 52216,
-                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "20.24.80.180",
+                    "port": 52332,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,9 +37,11 @@
         },
         "streamSettings":
         {
-            "network": "tcp",
+            "network": "ws",
             "security": "none",
-            "tcpSettings": {}
+            "wsSettings": 
+            {
+            }
 		}
 	},
 
