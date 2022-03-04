@@ -236,8 +236,8 @@ class PingIP():
             print('rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
             time.sleep(3)
             s.kill()
-            #s.kill(SIGKILL)
-            #os.killpg(p.pid, signal.SIGUSR1)
+            # s.kill(SIGKILL)
+            # os.killpg(p.pid, signal.SIGUSR1)
         except Exception as ex:
             time.sleep(3)
             print('Down-File-is-False:filesize-[' + str(filesize) + ']-deltaTime:[' + str(deltaTime) + ']-delay-[' + str(delay) + ']-Exception:\n' + str(ex))
