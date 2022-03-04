@@ -135,6 +135,9 @@ date +%Y-%m-%d-%H:%M:%S
 python ./ipfs.py ipns
 date +%Y-%m-%d-%H:%M:%S
 
+dataline1=$(jobs -l|grep ipfs| grep -v grep | awk '{print $2}')
+kill -9 $dataline1
+
 rm -rf ./cls/__pycache__
 
 exit 0
