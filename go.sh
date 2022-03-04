@@ -62,7 +62,7 @@ echo ./test.py
 file1=./tmp/001.out
 # nohup python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt >$file1 2>&1 &
 python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt
-sleep 3600
+# sleep 3600
 echo CID-python
 # git push
 # sleep 10
