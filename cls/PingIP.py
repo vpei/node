@@ -396,7 +396,15 @@ class PingIP():
                         elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"HOST":') > -1):
                             onenode = onenode + '                "headers": {"host": "' + node['HOST'] + '"}\n'
                     else:
-                        onenode = onenode + '                "path": "' + node['path'] + '"\n'
+                        if(aonenode.find('"path":') > -1):
+                            onenode = onenode + '                "path": "' + node['path'] + '"\n'
+                        elif(aonenode.find('"ws-headers":') > -1):
+                            if(aonenode.find('"ws-headers":') > -1 and aonenode.find('"Host":') > -1):
+                                onenode = onenode + '                "headers": {"host": "' + node['Host'] + '"}\n'
+                            elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"host":') > -1):
+                                onenode = onenode + '                "headers": {"host": "' + node['host'] + '"}\n'
+                            elif(aonenode.find('"ws-headers":') > -1 and aonenode.find('"HOST":') > -1):
+                                onenode = onenode + '                "headers": {"host": "' + node['HOST'] + '"}\n'
                     onenode = onenode + '            }\n'
                 elif(node['net'] == 'quic'):
                     onenode = onenode + '            "quicSettings": {}\n'
