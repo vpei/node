@@ -39,9 +39,12 @@ cd /mnt/mmcblk2p4/NodeSpeed
 # sudo -E apt-get -qq install inetutils-ping
 #  pip install -r ./requirements.txt
 # git pull
+
+date +%Y-%m-%d-%H:%M:%S
 echo chmod -R 7777 ../NodeSpeed
 chmod -R 7777 ../NodeSpeed
 sleep 3
+
 date +%Y-%m-%d-%H:%M:%S
 echo python ./test.py -u
 # chmod 7777 ./clients/config.json
@@ -54,6 +57,7 @@ echo python ./test.py -u
 file1=./tmp/001.out
 # nohup python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt >$file1 2>&1 &
 python ./test.py -u http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt
+
 # sleep 3600
 echo CID-python
 # git push
@@ -72,11 +76,14 @@ echo $CID
 CID=${CID% *}
 # CID=${CID:0:46}
 echo ID:$CID
-date +%Y-%m-%d-%H:%M:%S
+
+# date +%Y-%m-%d-%H:%M:%S
 # ipfs id
-echo 将文件夹CID改名
+#　echo 将文件夹CID改名
 # ipfs files cp /ipfs/$CID /2$CID
 # ipfs pin add $CID
+
+date +%Y-%m-%d-%H:%M:%S
 echo 运行软件客户端
 file1=./tmp/002.out
 nohup ipfs daemon >$file1 2>&1 &
@@ -89,12 +96,12 @@ date +%Y-%m-%d-%H:%M:%S
 #ipfs files cp /ipfs/Qmczp7Sp6bsia8f6kxdMRvzqHKzrQM6NMYec9RfQJ3ksnq /clash/soft
 #sleep 30
 # echo 重新获取CID-1
-#dataline1=$(ipfs files stat "/clash" )
-#echo $dataline1
+#　dataline1=$(ipfs files stat "/clash" )
+#　echo $dataline1
 # echo 重新获取CID-2
-#CID=${dataline1:0:46}
+#　CID=${dataline1:0:46}
 echo ID:$CID
-#sleep 5
+#　sleep 5
 # echo 对发布文件夹的新CID进行远程固定
 # curl -X POST http://116.207.131.38:5001/api/v0/pin/add?arg=/ipfs/Qmczp7Sp6bsia8f6kxdMRvzqHKzrQM6NMYec9RfQJ3ksnq
 # curl -X POST https://ipfs.infura.io:5001/api/v0/pin/add?arg=/ipfs/$CID
@@ -105,11 +112,11 @@ echo ID:$CID
 # nohup sudo wget http://127.0.0.1:8080/ipfs/$CID/ -O $file1 >$file1 &
 # echo 对网络文件进行循环加载，提高IPFS发布成功率
 python ./ipfs.py ipfs $CID
-#echo 退出ipfs软件 ipfs #kill ipfs
-#ipfs shutdown
-#sleep 30
-#echo 显示所有进程
-#ps -A
+#　echo 退出ipfs软件 ipfs #kill ipfs
+#　ipfs shutdown
+#　sleep 30
+#　echo 显示所有进程
+#　ps -A
 date +%Y-%m-%d-%H:%M:%S
 echo 离线发布ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24h
 # ipfs name publish /ipfs/$CID --allow-offline=true --lifetime=24h
