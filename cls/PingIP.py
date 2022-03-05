@@ -235,6 +235,7 @@ class PingIP():
                 delay = 0
             print('rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
             time.sleep(3)
+            session.close()
             s.kill()
             # s.kill(SIGKILL)
             # os.killpg(p.pid, signal.SIGUSR1)

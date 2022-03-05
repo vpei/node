@@ -39,3 +39,6 @@ API server listening on /ip4/192.168.14.254/tcp/5001
 WebUI: http://192.168.14.254:5001/webui
 Gateway (readonly) server listening on /ip4/192.168.14.254/tcp/8080
 Daemon is ready
+
+Received interrupt signal, shutting down...
+(Hit ctrl-c again to force-shutdown the daemon.)

@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "107.148.200.123",
-                    "port": 30033,
-                    "users": [{"id": "e85a81e0-12a0-11ec-bc90-00163c1b189e", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "45.61.162.49",
+                    "port": 443,
+                    "users": [{"id": "bf1d5087-c522-42c8-9f64-4dd772f8fcea", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,9 +37,12 @@
         },
         "streamSettings":
         {
-            "network": "tcp",
+            "network": "ws",
             "security": "none",
-            "tcpSettings": {}
+            "wsSettings": 
+            {
+                "path": "/TS/recharge/tzUrl.html"
+            }
 		}
 	},
 
