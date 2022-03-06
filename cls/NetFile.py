@@ -11,17 +11,13 @@ class NetFile(): # 将订阅链接中YAML，Base64等内容转换为 Url 链接�
     def url_to_str(r_url, linktime, readtime):
         retxt = ''
         try:
-            requests.adapters.DEFAULT_RETRIES = 3 # 增加重连次数
-            s = requests.session()
-            s.keep_alive = False # 关闭多余连接
-            rq = s.get(r_url, timeout=(linktime, readtime))
+            rq = requests.get(r_url, timeout=(linktime, readtime))
             #rq = requests.get(url, timeout=(30, 60)) #连接超时 和 读取超时
             if (rq.status_code != 200):
                 print("\nNetFile-Line-18: Download File error.][" + str(rq.status_code) + "]-Url: " + r_url)
             else:
                 #retxt = rq.content.decode("utf-8")
                 retxt = rq.text.encode(rq.encoding).decode('utf-8')
-            rq.close()
         except Exception as ex:
             print('\nNetFile-Line-34: down res file err: ' + str(ex) + '\n' +  r_url)
         return retxt

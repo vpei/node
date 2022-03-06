@@ -3,26 +3,14 @@
 import requests
 import socket
 import json
-#from ip import QQwry
-from qqwry import QQwry
+import base64
 from cls.IsValid import IsValid
 
 class StrText():
-
-    # Base64加密文本转换为标准格式
-    def get_str_base64(origStr):
-        missing_padding = 4 - len(origStr) % 4 
-        if missing_padding: 
-            origStr += '=' * missing_padding
-        return origStr
-
     # 从字符中取两不同字符串中间的字符，print(sub_link)
-    def get_str_btw(s, f, b, y):
+    def get_str_btw(s, f, b):
         par = s.partition(f)
-        if(y == 0):
-            return (par[2].partition(b))[0][:]
-        else:
-            return f + '' + (par[2].partition(b))[0][:] + '' + b
+        return (par[2].partition(b))[0][:]
 
     # 通过域名获取IP
     def getIP(domain):
@@ -53,7 +41,7 @@ class StrText():
             ipdomainurl = ''
             try:
                 q = QQwry()
-                q.load_file('./res/qqwry.dat', loadindex=False)
+                q.load_file('./res/qqwry.dat')
                 #q.lookup('8.8.8.8')
                 if(IsValid.isIP(ipdomain) == False):
                     domain = ipdomain
@@ -121,7 +109,7 @@ class StrText():
                 if(ip_country.find('-') == -1 and (ip_country.find('省') == -1 or ip_country.find('市') == -1)):
                     ip_country = emoji['NOWHERE_LAND'] + '-' + ip_country
             except Exception as ex:
-                print('StrText-Line-124-Exception: ' + str(ex) + '\nipdomainurl:' + ipdomainurl + '-ipdomain:' + ipdomain)
+                print('Line-113-StrText: ' + str(ex) + '\n' + ipdomainurl + '\n' + ipdomain)
             return ip_country.encode('utf8').decode('utf-8')
         else:
             print('Line-122: 域名或IP为空')

@@ -6,48 +6,40 @@
 	},
 	"inbound": {
 		"port": 1087,
-		"protocol": "socks",  //  SOCKS 5//socks,http...
+		"protocol": "socks",  // 入口协议为 SOCKS 5//socks,http...
 	        "sniffing": {
 		  "enabled": true,
 		  "destOverride": ["http", "tls"]
 	        },
 		"settings": {
-			"auth": "noauth", //socks茂录聦noauth  socks 
+			"auth": "noauth", //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
 			"udp": true
 		}
 	},
 	"inboundDetour": [{
 		"protocol": "http",  //socks,http...
-		"port": 8088,
+		"port": 8080,
 		"settings": {"auth": "noauth", "udp": true}
 	}],
 	"outbound": {
-        "protocol": "vmess",
-        "settings": {
-            "vnext":
+		"protocol": "shadowsocks",
+		"settings": {
+            "servers":
             [
                 {
-                    "address": "165.154.225.54",
-                    "port": 80,
-                    "users": [{"id": "6c23fcf0-18e7-3cd0-a123-821fa514fb42", "alterId": 2, "security": "auto", "level": 0}]
+                    "email": "love@v2ray.com",
+                    "address": "46.29.218.6",
+                    "port": 7306,
+                    "method": "aes-256-gcm",
+                    "password": "FoOiGlkAA9yPEGP",
+                    "ota": false,
+                    "level": 0
                 }
-            ],
-            "servers": null,
-            "response": null
-        },
-        "streamSettings":
-        {
-            "network": "ws",
-            "security": "none",
-            "wsSettings": 
-            {
-                "path": "/v2ray"
-            }
+            ]
 		}
 	},
-
 	"levels": {
-		"100": {
+		"0": {
 			"handshake": 4,
 			"connIdle": 300,
 			"uplinkOnly": 2,

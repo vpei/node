@@ -10,10 +10,11 @@ class LocalFile(): # 将订阅链接中YAML，Base64等内容转换为 Url 链�
     def read_LocalFile(fname):
         retxt = ""
         try:
-            with open(fname, "r", encoding='utf-8') as f:  # 打开文件
+            #with open(fname, "r", encoding='unicode_escape') as f:  # 打开文件
+            with open(fname, "r", encoding='unicode_escape') as f:  # 打开文件
                 retxt = f.read()  # 读取文件
         except Exception as ex:
-            print('LocalFile-Line-16-Exception:\n' + str(ex))
+            print("Line-15-LocalFile: open local file error. \n" + + str(ex))
         return retxt
 
     # 写入字符串到本地文件
@@ -27,16 +28,11 @@ class LocalFile(): # 将订阅链接中YAML，Base64等内容转换为 Url 链�
                     os.makedirs(dirs)
             #”w"代表着每次运行都覆盖内容 #只需要将之前的”w"改为“a"即可，代表追加内容
             #_file = open(fname, 'w', encoding='utf-8')
-            fsize = 0
-            try:
-                fsize = os.path.getsize(fname) # 文件路径及文件名
-            except Exception as ex:
-                print("Line-34-LocalFile-Exception: " + str(ex))
-            if(fname.find('.log') > -1 and fsize < 80000000):
-                _file = open(fname, 'a', encoding='utf-8')  #日志文件追加
-            else:
+            if(fname.find('.log') == -1):
                 _file = open(fname, 'w', encoding='utf-8')  #一般文件覆盖
+            else:
+                _file = open(fname, 'a', encoding='utf-8')  #日志文件追加
             _file.write(res.decode("utf-8"))
             _file.close()
         except Exception as ex:
-            print("Line-42-LocalFile: write local file error. \n" + str(ex))
+            print("Line-26-LocalFile: write local file error. \n" + str(ex))
