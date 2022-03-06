@@ -21,7 +21,10 @@
 #
 # Command: sudo ./make -d
 # Command optional parameters please refer to the source code repository
-#
+# opkg update
+# opkg install python
+# wget https://bootstrap.pypa.io/get-pip.py  --no-check-certificate
+# python get-pip.py
 #============================ Functions list ============================
 
 # PATH=/mnt/mmcblk2p4/NodeSpeed
