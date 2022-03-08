@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "45.61.162.49",
-                    "port": 443,
-                    "users": [{"id": "bf1d5087-c522-42c8-9f64-4dd772f8fcea", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "access1.upyun.online",
+                    "port": 13571,
+                    "users": [{"id": "ff178504-2e01-473c-9b2e-f6b77d3ef4b1", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/TS/recharge/tzUrl.html"
+                "path": "/"
             }
 		}
 	},
