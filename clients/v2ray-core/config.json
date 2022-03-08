@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "104.255.65.252",
-                    "port": 21067,
-                    "users": [{"id": "26d1d351-05b3-40e8-8c60-d835563a1661", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "zfd.out04.nodeserver.top",
+                    "port": 16106,
+                    "users": [{"id": "b07b19c1-9ee9-3796-8690-cb09f9646ae0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
