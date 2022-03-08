@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "a83679f.tt.cloudflare.systems",
-                    "port": 80,
-                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 32, "security": "auto", "level": 0}]
+                    "address": "hkawst3.biteb-ssx.xyz",
+                    "port": 14259,
+                    "users": [{"id": "027dfdb0-8939-3176-bb4a-1ec79582f034", "alterId": 2, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/t"
+                "path": "index"
             }
 		}
 	},
