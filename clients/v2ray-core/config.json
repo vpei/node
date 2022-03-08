@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "165.154.225.54",
-                    "port": 80,
-                    "users": [{"id": "6c23fcf0-18e7-3cd0-a123-821fa514fb42", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "198.200.51.18",
+                    "port": 27962,
+                    "users": [{"id": "b660c4a6-50df-11ec-9676-00163caf481c", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/v2ray"
+                "path": "/jZyaImnU/"
             }
 		}
 	},

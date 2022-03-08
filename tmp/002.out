@@ -4,5 +4,4 @@ Repo version: 12
 System version: arm64/linux
 Golang version: go1.16.12
 
-Error: no IPFS repo found in /.ipfs.
-please run: 'ipfs init'
+Error: lock /root/.ipfs/repo.lock: someone else has the lock
