@@ -131,7 +131,6 @@ class PingIP():
         # 启动v2ray
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/clients/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","{}/clients/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        s = subprocess.Popen(["./clients/v2ray-core/v2ray.exe","--config","{}/clients/v2ray-core/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/clients/config.json" % os.getcwd()])
         # s = subprocess.Popen(["./clients/xray/xray.exe","--config","{}/clients/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/xray/xray","--config","%s/clients/config.json" % os.getcwd()])
@@ -147,7 +146,8 @@ class PingIP():
         # s = subprocess..Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config",confile])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray test /mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
-        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray.exe","--config","{}/clients/v2ray-core/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         print('s.pid:' + str(s.pid))
         time.sleep(2)
         '''
