@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "cmhk04.xc188.net",
-                    "port": 443,
-                    "users": [{"id": "65cac56d-4155-43c8-bae0-f368cb21f771", "alterId": 1, "security": "auto", "level": 0}]
+                    "address": "zfd.out02.nodeserver.top",
+                    "port": 16208,
+                    "users": [{"id": "b07b19c1-9ee9-3796-8690-cb09f9646ae0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,13 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
-            "security": "tls",
-            "tlsSettings": {},
-            "wsSettings": 
-            {
-                "path": "/clientarea"
-            }
+            "network": "tcp",
+            "security": "none",
+            "tcpSettings": {}
 		}
 	},
 
