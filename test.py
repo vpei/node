@@ -45,14 +45,17 @@ localnode = LocalFile.read_LocalFile("./out/node.txt")
 localnode = base64.b64decode(localnode).decode("utf-8", "ignore")
 
 clashnodes = NetFile.url_to_str(url + 'node.txt', 240, 120)
-# clashnodes = NetFile.url_to_str('http://192.168.14.5/dat.txt', 240, 120)
 if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
     clashnodes = base64.b64decode(clashnodes).decode("utf-8")
-clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n')
 ii = 0
 allnode = ''
 url = 'http://123.56.68.121:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
 expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
+netnode = NetFile.url_to_str(url + 'index.html', 240, 120)
+
+clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n') + '\n' + netnode.strip('\n')
+# clashnodes = NetFile.url_to_str('http://192.168.14.5/dat.txt', 240, 120)
+clashnodes = clashnodes.replace('\r', '')
 for i in clashnodes.split('\n'):
     if(allnode.find(i) == -1 and expire.find(i) == -1):
         allnode = allnode + '\n' + i
@@ -67,9 +70,9 @@ for j in allnode.split('\n'):
         #    continue
         print(time.strftime('%Y-%m-%d %H:%M:%S'))
         onenode = PingIP.node_config_json(j, confile)
-        if(onenode.find('outbound') > -1):
+        if(onenode.find(':') > -1):
             ###以上已生成config.json文件###
-            kbs = PingIP.nodespeedtest(confile)
+            kbs = PingIP.nodespeedtest(onenode, confile)
             print('kbs:' + str(kbs))
             if(kbs > 0):            
                 #创建元素和加入列表

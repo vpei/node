@@ -3,7 +3,7 @@
 import base64
 import json
 import os
-from signal import SIGKILL
+import random
 import requests
 import socket
 import subprocess
@@ -112,12 +112,26 @@ class PingIP():
             info = ('\033[31m%s\033[0m ping 不通！' % ip)
             #return info
             print('\033[31m%s\033[0m ping 不通！' % ip)
-            
-    def nodespeedtest(confile):
+
+    first_num = random.randint(55, 62)
+    third_num = random.randint(0, 3200)
+    fourth_num = random.randint(0, 140)
+    os_type = [
+                '(Windows NT 6.1; WOW64)', '(Windows NT 10.0; WOW64)', '(X11; Linux x86_64)',
+                '(Macintosh; Intel Mac OS X 10_12_6)'
+               ]
+ 
+    chrome_version = 'Chrome/{}.0.{}.{}'.format(first_num, third_num, fourth_num)
+ 
+    def get_ua(cls):
+        return ' '.join(['Mozilla/5.0', random.choice(cls.os_type), 'AppleWebKit/537.36',
+                         '(KHTML, like Gecko)', cls.chrome_version, 'Safari/537.36']
+                        )
+    def nodespeedtest(node, confile):
         # 启动v2ray
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/clients/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","{}/clients/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        # s = subprocess.Popen(["./clients/v2ray-core/v2ray.exe","--config","{}/clients/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        s = subprocess.Popen(["./clients/v2ray-core/v2ray.exe","--config","{}/clients/v2ray-core/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config","%s/clients/config.json" % os.getcwd()])
         # s = subprocess.Popen(["./clients/xray/xray.exe","--config","{}/clients/config.json".format(os.getcwd())],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/xray/xray","--config","%s/clients/config.json" % os.getcwd()])
@@ -133,7 +147,7 @@ class PingIP():
         # s = subprocess..Popen(["./clients/v2ray-core/v2ray","--config","%s/config.json" % os.getcwd()],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray","--config",confile])
         # s = subprocess.Popen(["./clients/v2ray-core/v2ray test /mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"])
-        s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        # s = subprocess.Popen(["./clients/v2ray-core/v2ray","run","/mnt/mmcblk2p4/NodeSpeed/clients/v2ray-core/config.json"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         print('s.pid:' + str(s.pid))
         time.sleep(2)
         '''
@@ -206,20 +220,49 @@ class PingIP():
             serverStr = '127.0.0.1'
             port = 1087
             session = requests.Session()
-            #proxies = {'http': 'http://localhost:' + str(port),
-            #            'https': 'http://localhost:' + str(port)}
-            #session.proxies.update(proxies)
-            
             #session.proxies = {'http': 'socks5://localhost:' + str(port)}
-            session.proxies = {'http': 'socks5://' + serverStr + ':' + str(port)}
+            #session.proxies = {'http': 'socks5://' + serverStr + ':' + str(port)}
+            #proxies = {
+            #    'http': 'http://localhost:' + str(port),
+            #    'https': 'http://localhost:' + str(port)
+            #}
+            #proxies = {'http': 'socks5://localhost:' + str(port)}
+            #proxies = {'http': 'socks5://' + serverStr + ':' + str(port)}
+            proxies = {'http': 'http://' + serverStr + ':' + str(port)}
+            session.proxies.update(proxies)
             session.headers = {"Connection":"close"}
             session.keep_alive = False # 关闭多余连接
 
             # url = 'https://policies.google.com/terms?hl=zh-CN&fg=1#toc-intro'
             # url = 'https://www.baidu.com'
             url = 'https://cachefly.cachefly.net/1mb.test'
-            # rq = session.get(url, timeout = 20)
+            
             rq = session.get(url, timeout = 20)
+
+            '''
+            headers = {
+                'User-Agent': PingIP.get_ua(),
+                'Accept-Encoding': 'gzip, deflate, sdch',
+                'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Connection': 'keep-alive'
+            }
+
+            proxy_dict = {
+                "http": "socks5://" + serverStr + ":" + str(port) + "/",
+                "https": "socks5://" + serverStr + ":" + str(port) + "/"
+            }
+            headers=headers # (headers.py的字典)
+            rq=session.get(url,headers=headers,proxies=proxy_dict)
+            '''
+            '''
+            proxies={
+                "http": "http://" + serverStr + ":" + str(port) + "/",
+                "https": "http://" + serverStr + ":" + str(port) + "/"
+            }
+            rq = requests.get(url,proxies=proxies)
+
+            '''
             rq.encoding = "utf-8"
             if (rq.status_code == 200):
                 #filez = rq.text
@@ -233,27 +276,33 @@ class PingIP():
                     delay = 0
             else:
                 delay = 0
-            print('rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
+            print('node-' + node + '-rq.status_code-[' + str(rq.status_code) + ']-filesize-[' + str(filesize) + ']-deltaTime-[' + str(deltaTime) + ']-kbs-[' + str(delay) + 'KB/s]')
             time.sleep(3)
-            rq.close()
             session.close()
             s.kill()
             # s.kill(SIGKILL)
             # os.killpg(p.pid, signal.SIGUSR1)
         except Exception as ex:
+            print('Down-File-is-False:node-' + node + '-filesize-[' + str(filesize) + ']-deltaTime:[' + str(deltaTime) + ']-delay-[' + str(delay) + ']-Exception:\n' + str(ex))
             time.sleep(3)
-            print('Down-File-is-False:filesize-[' + str(filesize) + ']-deltaTime:[' + str(deltaTime) + ']-delay-[' + str(delay) + ']-Exception:\n' + str(ex))
         return delay
 
     def node_config_json(j, confile):
+        address = ''
         try:
             if(j.find('ss://') == 0):
                 onenode = j.split("#", 1) # 第二个参数为 1，返回两个参数列表
                 oldname = onenode[1]
-                onenode = (base64.b64decode(onenode[0][5:].encode("utf-8")).decode("utf-8"))
+                if(onenode[0].find('@') > -1):
+                    onode = onenode[0][5:].split("@", 1)
+                    x = onode[0]
+                    y = onode[1]
+                    onenode = (base64.b64decode(x.encode("utf-8")).decode("utf-8")) + '@' + y
+                else:
+                    onenode = (base64.b64decode(onenode[0][5:].encode("utf-8")).decode("utf-8"))
                 # chacha20-ietf-poly1305:12f4863a-b470-40c9-8c3a-47606b1012b5@n18.emovpn.xyz:443
-                port = onenode.rsplit(':', 1)[1]
                 address = StrText.get_str_btw(onenode, "@", ":")
+                port = onenode.rsplit(':', 1)[1]
                 method = onenode.split(':', 1)[0]
                 password = StrText.get_str_btw(onenode, ":", "@")
 
@@ -352,15 +401,16 @@ class PingIP():
                 }
                 '''
                 node = json.loads(aonenode)
-
+                address = node['add']
+                port = node['port']
                 onenode = '	"outbound": {\n'
                 onenode = onenode + '        "protocol": "vmess",\n'
                 onenode = onenode + '        "settings": {\n'
                 onenode = onenode + '            "vnext":\n'
                 onenode = onenode + '            [\n'
                 onenode = onenode + '                {\n'
-                onenode = onenode + '                    "address": "' + node['add'] + '",\n'
-                onenode = onenode + '                    "port": ' + node['port'] + ',\n'
+                onenode = onenode + '                    "address": "' + address + '",\n'
+                onenode = onenode + '                    "port": ' + port + ',\n'
                 onenode = onenode + '                    "users": [{"id": "' + node['id'] + '", "alterId": ' + node['aid'] + ', "security": "' + node['scy'] + '", "level": 0}]\n'
                 onenode = onenode + '                }\n'
                 onenode = onenode + '            ],\n'
@@ -433,6 +483,7 @@ class PingIP():
             print('开始生成节点文件:' + confile)
             LocalFile.write_LocalFile(confile, onenode)
             time.sleep(2)
+            address = address + ':' + port
         except Exception as ex:
-            print('Create-File-Config-Exception:\n' + str(ex))
-        return onenode
+            print('Create-File-Config-Exception:\n' + str(ex) + '\nonenode:\n' + onenode)
+        return address

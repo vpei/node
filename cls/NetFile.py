@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import requests
-import os
-import time
 import urllib.request as urllib2
 from cls.LocalFile import LocalFile
 
