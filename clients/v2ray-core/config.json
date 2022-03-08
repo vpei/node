@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "ff5c0fb.hf.gladns.com",
-                    "port": 3306,
-                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "xhjniubi.xyz",
+                    "port": 10086,
+                    "users": [{"id": "1ff21cb2-3b5a-380c-a087-2588077bf214", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,12 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
+            "network": "tcp",
             "security": "none",
-            "wsSettings": 
-            {
-                "path": "/s/ff5c0fb.fm.apple.com:30513"
-            }
+            "tcpSettings": {}
 		}
 	},
 
