@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "a83679f.rb.gladns.com",
-                    "port": 80,
-                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 32, "security": "aes-128-gcm", "level": 0}]
+                    "address": "104.255.65.252",
+                    "port": 21067,
+                    "users": [{"id": "26d1d351-05b3-40e8-8c60-d835563a1661", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,14 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
-            "security": "tls",
-            "sni":"",
-            "tlsSettings": {},
-            "wsSettings": 
-            {
-                "path": "/t"
-            }
+            "network": "tcp",
+            "security": "none",
+            "tcpSettings": {}
 		}
 	},
 
