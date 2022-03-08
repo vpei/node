@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "access1.upyun.online",
-                    "port": 13571,
-                    "users": [{"id": "ff178504-2e01-473c-9b2e-f6b77d3ef4b1", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "zfd.out03.nodeserver.top",
+                    "port": 16229,
+                    "users": [{"id": "b07b19c1-9ee9-3796-8690-cb09f9646ae0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,12 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
+            "network": "tcp",
             "security": "none",
-            "wsSettings": 
-            {
-                "path": "/"
-            }
+            "tcpSettings": {}
 		}
 	},
 
