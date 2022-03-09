@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "ru02.ddns.99iplc.xyz",
-                    "port": 10086,
-                    "users": [{"id": "a52e8f88-a2a1-33d9-96c8-84115b56686c", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "45.89.229.126",
+                    "port": 18000,
+                    "users": [{"id": "44606009-f8e0-37d3-99be-b59b7075f991", "alterId": 1, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,9 +37,12 @@
         },
         "streamSettings":
         {
-            "network": "tcp",
+            "network": "ws",
             "security": "none",
-            "tcpSettings": {}
+            "wsSettings": 
+            {
+                "path": "/niaoyun"
+            }
 		}
 	},
 
