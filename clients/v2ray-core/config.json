@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "hkbn2.tcpbbr.net",
-                    "port": 443,
-                    "users": [{"id": "73a4ff1c-85c8-11ea-82ef-f23c9164ca5d", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "ff5c0fb.re.gladns.com",
+                    "port": 80,
+                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,11 +37,12 @@
         },
         "streamSettings":
         {
-            "network": "tcp",
-            "security": "tls",
-            "sni":"",
-            "tlsSettings": {},
-            "tcpSettings": {}
+            "network": "ws",
+            "security": "none",
+            "wsSettings": 
+            {
+                "path": "/s/ff5c0fb.fm.icloud.com:30513"
+            }
 		}
 	},
 
