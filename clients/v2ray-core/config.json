@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "jp1.otwc-node.cc",
-                    "port": 88,
-                    "users": [{"id": "97566dce-9409-4718-a00c-1cd6189a7418", "alterId": 1, "security": "auto", "level": 0}]
+                    "address": "46.182.107.3",
+                    "port": 443,
+                    "users": [{"id": "b2aa7a8a-ab88-4c0f-a310-0b9456c69420", "alterId": 64, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -43,7 +43,7 @@
             "tlsSettings": {},
             "wsSettings": 
             {
-                "path": "/"
+                "path": "/footers"
             }
 		}
 	},
