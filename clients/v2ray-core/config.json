@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "45.147.200.32",
-                    "port": 8080,
-                    "users": [{"id": "1285daf5-d0a5-4ef9-9181-229fc9680bd5", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "40.83.115.147",
+                    "port": 52281,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,6 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/WebSocket"
             }
 		}
 	},
