@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "40.83.115.147",
-                    "port": 52437,
-                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "54.183.244.5",
+                    "port": 80,
+                    "users": [{"id": "e1aa83ff-b8b5-41b8-a854-fdcd3faa8875", "alterId": 1, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,6 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
+                "path": "/"
             }
 		}
 	},
