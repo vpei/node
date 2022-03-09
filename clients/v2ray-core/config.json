@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "45.144.2.10",
-                    "port": 8080,
-                    "users": [{"id": "1285daf5-d0a5-4ef9-9181-229fc9680bd5", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "3.ssrj.xyz",
+                    "port": 65103,
+                    "users": [{"id": "24ea3f63-d495-3a0a-a7de-f92a4e6fb9ae", "alterId": 2, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,12 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
+            "network": "tcp",
             "security": "none",
-            "wsSettings": 
-            {
-                "path": "/WebSocket"
-            }
+            "tcpSettings": {}
 		}
 	},
 
