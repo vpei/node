@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "7704d818-78e5-471a-a1d6-655c4d79f662.1c5f5adf-a6ce-4066-b318-fa7eb97f68c8.xn--9kq764g2xn.com",
-                    "port": 30002,
-                    "users": [{"id": "7458cb31-c9e0-4dcc-ab17-4438bba2492b", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "40.83.115.147",
+                    "port": 52437,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,6 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": ""
             }
 		}
 	},
