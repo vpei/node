@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "45.89.229.126",
-                    "port": 18000,
-                    "users": [{"id": "44606009-f8e0-37d3-99be-b59b7075f991", "alterId": 1, "security": "auto", "level": 0}]
+                    "address": "20.189.92.94",
+                    "port": 52299,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,12 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
+            "network": "tcp",
             "security": "none",
-            "wsSettings": 
-            {
-                "path": "/niaoyun"
-            }
+            "tcpSettings": {}
 		}
 	},
 
