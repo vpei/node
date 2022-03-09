@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "54.183.244.5",
-                    "port": 80,
-                    "users": [{"id": "e1aa83ff-b8b5-41b8-a854-fdcd3faa8875", "alterId": 1, "security": "auto", "level": 0}]
+                    "address": "v6.ssrsub.com",
+                    "port": 8443,
+                    "users": [{"id": "1de99090-4bd5-4670-9cec-05f55b4c6917", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -38,10 +38,11 @@
         "streamSettings":
         {
             "network": "ws",
-            "security": "none",
+            "security": "tls",
+            "tlsSettings": {},
             "wsSettings": 
             {
-                "path": "/"
+                "path": "/ssrsub"
             }
 		}
 	},
