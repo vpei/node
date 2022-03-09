@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "zfd.out02.nodeserver.top",
-                    "port": 16228,
-                    "users": [{"id": "b07b19c1-9ee9-3796-8690-cb09f9646ae0", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "a83679f.rd.gladns.com",
+                    "port": 80,
+                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 32, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,9 +37,12 @@
         },
         "streamSettings":
         {
-            "network": "tcp",
+            "network": "ws",
             "security": "none",
-            "tcpSettings": {}
+            "wsSettings": 
+            {
+                "path": "/t"
+            }
 		}
 	},
 
