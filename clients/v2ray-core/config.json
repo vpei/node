@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "172.104.88.64",
-                    "port": 18000,
-                    "users": [{"id": "80bc6df4-2905-35f9-a671-35bc803d93cd", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "c27821f.he.gladns.com",
+                    "port": 3306,
+                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/niaoyun"
+                "path": "/s/c27821f.fm.apple.com:16708"
             }
 		}
 	},
