@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "jpaz4.biteb-ssx.xyz",
-                    "port": 11742,
-                    "users": [{"id": "773b08b5-4c34-31c4-be74-d2cfaf335a25", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "jp1.otwc-node.cc",
+                    "port": 88,
+                    "users": [{"id": "97566dce-9409-4718-a00c-1cd6189a7418", "alterId": 1, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -38,10 +38,12 @@
         "streamSettings":
         {
             "network": "ws",
-            "security": "none",
+            "security": "tls",
+            "sni":"",
+            "tlsSettings": {},
             "wsSettings": 
             {
-                "path": "index"
+                "path": "/"
             }
 		}
 	},
