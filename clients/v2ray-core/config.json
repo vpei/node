@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "137.184.95.170",
-                    "port": 80,
-                    "users": [{"id": "80bc6df4-2905-35f9-a671-35bc803d93cd", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "jpaz4.biteb-ssx.xyz",
+                    "port": 11742,
+                    "users": [{"id": "773b08b5-4c34-31c4-be74-d2cfaf335a25", "alterId": 2, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/niaoyun"
+                "path": "index"
             }
 		}
 	},
