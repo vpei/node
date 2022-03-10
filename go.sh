@@ -8,12 +8,10 @@
 # This file is a part of the make OpenWrt for Amlogic s9xxx tv box
 # https://github.com/ophub/amlogic-s9xxx-openwrt
 #
-# Description: Automatically Packaged OpenWrt for Amlogic s9xxx tv box
-# Copyright (C) 2020- https://github.com/unifreq
-# Copyright (C) 2020- https://github.com/tuanqing/mknop
-# Copyright (C) 2020- https://github.com/ophub/amlogic-s9xxx-openwrt
+# Description: Automatically Packaged node
+# Copyright (C) 2020- https://github.com/vpei
 #
-#===== Install the basic packages of make openwrt for Ubuntu 20.04 ======
+#===== Install the basic packages of make node speed for Ubuntu 20.04 ======
 #
 # sudo apt-get update -y
 # sudo apt-get full-upgrade -y
