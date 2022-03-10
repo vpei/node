@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "ff5c0fb.rc.gladns.com",
-                    "port": 80,
-                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "52.175.10.2",
+                    "port": 52282,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,12 +37,9 @@
         },
         "streamSettings":
         {
-            "network": "ws",
+            "network": "tcp",
             "security": "none",
-            "wsSettings": 
-            {
-                "path": "/s/ff5c0fb.fm.icloud.com:30513"
-            }
+            "tcpSettings": {}
 		}
 	},
 
