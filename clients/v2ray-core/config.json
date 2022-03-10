@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "mf-do-ua-10.xncloud.xyz",
-                    "port": 80,
-                    "users": [{"id": "12c00b6c-bdec-3162-aac2-2ae87e174156", "alterId": 1, "security": "auto", "level": 0}]
+                    "address": "hkaz1.biteb-ssx.xyz",
+                    "port": 14454,
+                    "users": [{"id": "773b08b5-4c34-31c4-be74-d2cfaf335a25", "alterId": 2, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/niaoyun"
+                "path": "index"
             }
 		}
 	},
