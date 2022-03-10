@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "216.24.176.55",
-                    "port": 61173,
-                    "users": [{"id": "9d1043a6-e87e-4bb7-8858-c1185e9c0c3b", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "40.83.115.147",
+                    "port": 52437,
+                    "users": [{"id": "08103798-414e-32b6-8748-2507732d2c51", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -37,9 +37,11 @@
         },
         "streamSettings":
         {
-            "network": "tcp",
+            "network": "ws",
             "security": "none",
-            "tcpSettings": {}
+            "wsSettings": 
+            {
+            }
 		}
 	},
 
