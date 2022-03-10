@@ -22,10 +22,6 @@ except:
     url = 'init'
 
 confile = './clients/v2ray-core/config.json'
-url = 'https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-0.txt'
-url = 'http://118.123.241.64:8080/ipfs/QmRv7QQW4i2mDHe4GssT2eTpR43z1E7ZeexDBpVkonrwJ9/'
-url = 'http://123.56.68.121:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
-url = 'https://sub.maoxiongnet.com/sub?target=v2ray&url=https%3A%2F%2Ffree.kingfu.cf%2Fvmess%2Fsub&'
 url = 'http://143.198.135.169:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/'
 print('url: ' + url)
 
