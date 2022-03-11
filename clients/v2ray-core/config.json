@@ -27,8 +27,8 @@
             "vnext":
             [
                 {
-                    "address": "c27821f.he.gladns.com",
-                    "port": 3306,
+                    "address": "ff5c0fb.rb.gladns.com",
+                    "port": 443,
                     "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
@@ -38,10 +38,11 @@
         "streamSettings":
         {
             "network": "ws",
-            "security": "none",
+            "security": "tls",
+            "tlsSettings": {},
             "wsSettings": 
             {
-                "path": "/s/c27821f.fm.apple.com:16708"
+                "path": "/s/ff5c0fb.fm.icloud.com:30513"
             }
 		}
 	},
