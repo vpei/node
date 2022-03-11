@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "00.cn3.rocketdns.xyz",
-                    "port": 65008,
-                    "users": [{"id": "1ff21cb2-3b5a-380c-a087-2588077bf214", "alterId": 2, "security": "auto", "level": 0}]
+                    "address": "c27821f.he.gladns.com",
+                    "port": 3306,
+                    "users": [{"id": "57e0cb4d-eae5-48ec-8091-149dc2b309e0", "alterId": 0, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/rocket"
+                "path": "/s/c27821f.fm.apple.com:16708"
             }
 		}
 	},
