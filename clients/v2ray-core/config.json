@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "20.210.228.244",
-                    "port": 80,
-                    "users": [{"id": "b638006b-8fe5-4e4c-ba84-7efcfc9df418", "alterId": 1, "security": "auto", "level": 0}]
+                    "address": "00.cn3.rocketdns.xyz",
+                    "port": 65008,
+                    "users": [{"id": "1ff21cb2-3b5a-380c-a087-2588077bf214", "alterId": 2, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -41,7 +41,7 @@
             "security": "none",
             "wsSettings": 
             {
-                "path": "/"
+                "path": "/rocket"
             }
 		}
 	},
