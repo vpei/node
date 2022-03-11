@@ -27,9 +27,9 @@
             "vnext":
             [
                 {
-                    "address": "66.42.103.1",
-                    "port": 50890,
-                    "users": [{"id": "11365a2e-6938-11ec-9b3d-560003c3fd49", "alterId": 0, "security": "auto", "level": 0}]
+                    "address": "46.182.107.3",
+                    "port": 443,
+                    "users": [{"id": "b2aa7a8a-ab88-4c0f-a310-0b9456c69420", "alterId": 64, "security": "auto", "level": 0}]
                 }
             ],
             "servers": null,
@@ -38,10 +38,12 @@
         "streamSettings":
         {
             "network": "ws",
-            "security": "none",
+            "security": "tls",
+            "sni":"",
+            "tlsSettings": {},
             "wsSettings": 
             {
-                "path": "/5YpZGAg8/"
+                "path": "/footers"
             }
 		}
 	},
