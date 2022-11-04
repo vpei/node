@@ -22,7 +22,7 @@ except:
     url = 'init'
 
 confile = './clients/v2ray-core/config.json'
-url = 'http://143.198.135.169:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
+url = 'http://123.56.68.121:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
 print('url: ' + url)
 
 # 测试单个节点
@@ -45,7 +45,6 @@ if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
     clashnodes = base64.b64decode(clashnodes).decode("utf-8")
 ii = 0
 allnode = ''
-url = 'http://123.56.68.121:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
 expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
 netnode = NetFile.url_to_str(url + 'index.html', 240, 120)
 
