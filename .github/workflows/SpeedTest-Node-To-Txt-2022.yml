@@ -56,7 +56,7 @@ jobs:
           chmod 7777 ./clients/v2ray-core/v2ctl
           chmod 7777 ./clients/v2ray-core/v2ctl
           #python ./main.py -u "http://13.212.72.222:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/node.txt"
-          python ./test.py -u https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-1.txt
+          python3 ./test.py -u https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/res/node-1.txt
           echo "::set-output name=status::success"
 
       - name: 'Send telegram message on push'

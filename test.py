@@ -22,7 +22,7 @@ except:
     url = 'init'
 
 confile = './clients/v2ray-core/config.json'
-url = 'http://143.198.135.169:8080/ipns/k51qzi5uqu5dlfnig6lej7l7aes2d5oed6a4435s08ccftne1hq09ac1bulz2f/'
+url = 'http://143.198.135.169:8080/ipns/k2k4r8n10q07nqe02zysssxw1b9qboab0dd3ooljd32i9ro3edry6hv6/'
 print('url: ' + url)
 
 # 测试单个节点
