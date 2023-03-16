@@ -18,6 +18,7 @@ import operator
 # import sys
 # sys.path.append('./vpei_node/')
 import os
+print(os.getcwd())
 os.chdir('./')
 from cls import IsValid
 from cls import LocalFile
