@@ -20,12 +20,13 @@ import operator
 import os
 print('workdir:' + os.getcwd())
 # os.chdir('/ql/data/repo/vpei_node/')
-print('workdir:' + os.getcwd())
 from cls import IsValid
 from cls import LocalFile
 from cls import ListFile
 from cls import NetFile
 from cls import PingIP
+
+workdir = os.getcwd()
 
 # 获取传递的参数
 try:
@@ -55,7 +56,7 @@ class Department:#自定义的元素
         self.name = name
         self.kbs= kbs
 
-localnode = LocalFile.read_LocalFile("./out/node.txt")
+localnode = LocalFile.read_LocalFile(workdir + "/out/node.txt")
 localnode = base64.b64decode(localnode).decode("utf-8", "ignore")
 
 clashnodes = NetFile.url_to_str(url + 'node.txt', 240, 120)
@@ -64,7 +65,7 @@ if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
 ii = 0
 allnode = ''
 expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
-expire = LocalFile.read_LocalFile("./out/expire.txt")
+expire = LocalFile.read_LocalFile(workdir + "/out/expire.txt")
 netnode = NetFile.url_to_str(url + 'index.html', 240, 120)
 
 clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n') + '\n' + netnode.strip('\n')
@@ -119,11 +120,11 @@ for depart in Departs:
 newallnode = base64.b64encode(newallnode.strip('\n').encode("utf-8")).decode("utf-8")
 # 保留处理后的结果
 if(len(newallnode) > 1024):
-    LocalFile.write_LocalFile('./out/node.txt', newallnode) 
+    LocalFile.write_LocalFile(workdir + '/out/node.txt', newallnode) 
     print('node.txt-is-ok')
 else:
     print('node.txt-is-err-filesize:' + str(len(newallnode)))
 
-LocalFile.write_LocalFile('./out/expire.txt', expire.strip('\n'))
+LocalFile.write_LocalFile(workdir + '/out/expire.txt', expire.strip('\n'))
 
 print(time.strftime('%Y-%m-%d %H:%M:%S'))
