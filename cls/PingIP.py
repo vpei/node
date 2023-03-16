@@ -228,7 +228,7 @@ class PingIP():
             #}
             #proxies = {'http': 'socks5://localhost:' + str(port)}
             #proxies = {'http': 'socks5://' + serverStr + ':' + str(port)}
-            proxies = {'http': 'http://' + serverStr + ':' + str(port)}
+            proxies = {'https': 'http://' + serverStr + ':' + str(port)}
             session.proxies.update(proxies)
             session.headers = {"Connection":"close"}
             session.keep_alive = False # 关闭多余连接
