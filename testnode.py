@@ -18,7 +18,7 @@ import operator
 # import sys
 # sys.path.append('./vpei_node/')
 import os
-os.chdir('./vpei_node')
+os.chdir('../vpei_node/')
 from cls import IsValid
 from cls import LocalFile
 from cls import ListFile
