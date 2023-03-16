@@ -65,7 +65,7 @@ if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
 ii = 0
 allnode = ''
 expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
-expire = LocalFile.read_LocalFile(workdir + "/out/expire.txt")
+expire = LocalFile.read_LocalFile('./out/expire.txt')
 netnode = NetFile.url_to_str(url + 'index.html', 240, 120)
 
 clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n') + '\n' + netnode.strip('\n')
