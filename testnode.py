@@ -42,7 +42,7 @@ except:
 confile = './clients/v2ray-core/config.json'
 url = 'http://114.116.213.73:8080/ipfs/QmXhAn3EQza9oiudQHuuT2evtajmTfSSKpBG3yiSTZpeSY/'
 url = 'http://122.225.207.101:8080/ipns/k2k4r8kms1l1k3wljk4o8eopnb2dltfvh8pypr0zkeyjunyagft3aqvs/'
-url = 'https://ghproxy.com/https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/o/node.txt'
+url = 'https://ghproxy.com/https://raw.githubusercontent.com/vpei/Free-Node-Merge/main/o/node.txt#'
 print('url: ' + url)
 
 # 测试单个节点
