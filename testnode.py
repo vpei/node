@@ -19,7 +19,7 @@ import operator
 # sys.path.append('./vpei_node/')
 import os
 print('workdir:' + os.getcwd())
-os.chdir('./vpei_node')
+os.chdir('/ql/data/scripts/vpei_node/')
 print('workdir:' + os.getcwd())
 from cls import IsValid
 from cls import LocalFile
