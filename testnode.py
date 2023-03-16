@@ -86,7 +86,7 @@ for j in allnode.split('\n'):
         #    continue
         print(time.strftime('%Y-%m-%d %H:%M:%S'))
         onenode = PingIP.node_config_json(j, confile)
-        if(onenode.find(':') > -1):
+        if(onenode.find(':') > -1 and expire.find(j) == -1):
             ###以上已生成config.json文件###
             kbs = PingIP.nodespeedtest(onenode, confile)
             print('kbs:' + str(kbs))
@@ -95,8 +95,7 @@ for j in allnode.split('\n'):
                 Departs.append(Department(int(kbs), j , str(kbs)))
                 print('Line-77-' + str(i) + '-已添加节点:' + j + '\n')
             else:
-                if(expire.find(j) == -1):
-                    expire = expire + '\n' + j
+                expire = expire + '\n' + j
                 print('Line-80-' + str(i) + '-已出错节点:' + j + '\n')
         else:
             print('Line-82-' + str(i) + '-已过滤节点' + '\n')
