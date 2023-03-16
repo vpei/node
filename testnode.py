@@ -19,8 +19,8 @@ import operator
 # sys.path.append('./vpei_node/')
 import os
 print('workdir:' + os.getcwd())
-os.chdir('./')
-print(os.getcwd())
+os.chdir('./vpei_node')
+print('workdir:' + os.getcwd())
 from cls import IsValid
 from cls import LocalFile
 from cls import ListFile
