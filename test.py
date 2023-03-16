@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+File: jd_superBrand.py(超级品牌日12豆2)
+Author: HarbourJ
+Date: 2023/1/15 08:00
+TG: https://t.me/HarbourToulu
+cron: 1 1 1 1 1 *
+new Env('超级品牌日12豆2');
+ActivityEntry: APP搜索"超级品牌日2"
+"""
 
 import base64
 import sys
