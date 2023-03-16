@@ -15,6 +15,10 @@ import base64
 import sys
 import time
 import operator
+# import sys
+# sys.path.append('./vpei_node/')
+import os
+os.chdir('./vpei_node')
 from cls import IsValid
 from cls import LocalFile
 from cls import ListFile
