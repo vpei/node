@@ -144,6 +144,11 @@ python main.py -u "https://home.yoyu.dev/subscriptionlink" --include 香港 Azur
 - **修改测速方式**
   - 在 ssrspeed_config.json 文件下第 24 行，可以设置采用单/多线程测速方式或均速/最高速测速方式，默认为前者 
 
+
+ql repo https://github.com/vpei/node.git "node" "" "^jd[^_]|USER|utils|ql|JD|sendNotify|pillow|requests|requests[socks]|pysocks|flask|flask-cors|pyyaml|aiohttp|aiohttp_socks|pynat|beautifulsoup4|selenium"
+
+
+
 ## 详细使用方法
 
 - 参见 [SSRSpeed N 使用说明](https://gta5cloud.rip/index.php/2021/08/25/ssrspeedn-%e4%bd%bf%e7%94%a8%e8%af%b4%e6%98%8e/)

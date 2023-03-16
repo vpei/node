@@ -59,3 +59,8 @@ CMD ["/bin/sh"]
 
 # 打包命令
 # docker login && docker buildx build -t vpei/node:latest --platform linux/amd64 --push .
+
+# 批量打包命令
+# docker buildx install
+# docker buildx create --use --name build --node build --driver-opt network=host
+# docker login && docker buildx build -t vpei/node:latest --platform linux/arm/v7,linux/arm64/v8,linux/386,linux/amd64 --push .
