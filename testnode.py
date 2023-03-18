@@ -7,8 +7,8 @@ Author: HarbourJ
 Date: 2023/1/15 08:00
 TG: https://t.me/HarbourToulu
 cron: 1 1 1 1 1 *
-new Env('超级品牌日12豆2');
-ActivityEntry: APP搜索"超级品牌日2"
+new Env('超级品牌日12豆22');
+ActivityEntry: APP搜索"超级品牌日222"
 """
 
 import base64
