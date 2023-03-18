@@ -120,11 +120,13 @@ for depart in Departs:
 newallnode = base64.b64encode(newallnode.strip('\n').encode("utf-8")).decode("utf-8")
 # 保留处理后的结果
 if(len(newallnode) > 1024):
-    LocalFile.write_LocalFile(workdir + '/out/node.txt', newallnode) 
+    # LocalFile.write_LocalFile(workdir + '/out/node.txt', newallnode) 
+    LocalFile.write_LocalFile('/ql/static/dist/node.txt', newallnode) 
     print('node.txt-is-ok')
 else:
     print('node.txt-is-err-filesize:' + str(len(newallnode)))
 
-LocalFile.write_LocalFile(workdir + '/out/expire.txt', expire.strip('\n'))
+# LocalFile.write_LocalFile(workdir + '/out/expire.txt', expire.strip('\n'))
+LocalFile.write_LocalFile('/ql/static/dist/expire.txt', expire.strip('\n'))
 
 print(time.strftime('%Y-%m-%d %H:%M:%S'))
