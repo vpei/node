@@ -65,16 +65,20 @@ if(IsValid.isBase64(clashnodes) and clashnodes.find('\n') == -1):
     clashnodes = base64.b64decode(clashnodes).decode("utf-8")
 ii = 0
 allnode = ''
-expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
-expire = LocalFile.read_LocalFile('./out/expire.txt')
+expire = ''
 netnode = NetFile.url_to_str(url + 'index.html', 240, 120)
+
+# expire = NetFile.url_to_str(url + 'expire.txt', 240, 120)
+# url = 'https://ql.vmess.com/'
+# expire = expire + '\n' + NetFile.url_to_str(url + 'expire.txt', 240, 120)
+# expire = expire + '\n' + LocalFile.read_LocalFile('./out/expire.txt')
 
 clashnodes = localnode.strip('\n') + '\n' + clashnodes.strip('\n') + '\n' + netnode.strip('\n')
 # clashnodes = NetFile.url_to_str('http://192.168.14.5/dat.txt', 240, 120)
 clashnodes = clashnodes.replace('\r', '')
 
 for i in clashnodes.split('\n'):
-    if(allnode.find(i) == -1 and expire.find(i) == -1):
+    if(allnode.find(i) == -1):
         allnode = allnode + '\n' + i
 allnode = allnode.replace(' ', '').replace('\n\n', '\n').strip('\n')
 i = 0
@@ -87,7 +91,7 @@ for j in allnode.split('\n'):
         #    continue
         print(time.strftime('%Y-%m-%d %H:%M:%S'))
         onenode = PingIP.node_config_json(j, confile)
-        if(onenode.find(':') > -1 and expire.find(j) == -1):
+        if(onenode.find(':') > -1):
             ###以上已生成config.json文件###
             kbs = PingIP.nodespeedtest(onenode, confile)
             print('kbs:' + str(kbs))
@@ -96,7 +100,8 @@ for j in allnode.split('\n'):
                 Departs.append(Department(int(kbs), j , str(kbs)))
                 print('Line-77-' + str(i) + '-已添加节点:' + j + '\n')
             else:
-                expire = expire + '\n' + j
+                if(expire.find(j) == -1):
+                    expire = expire + '\n' + j
                 print('Line-80-' + str(i) + '-已出错节点:' + j + '\n')
         else:
             print('Line-82-' + str(i) + '-已过滤节点' + '\n')
